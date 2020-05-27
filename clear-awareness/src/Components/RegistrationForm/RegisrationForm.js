@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import AuthApiService from "../../services/auth-api-service";
+import AuthApiService from "../../Services/auth-api-service";
 import "./RegistrationForm.css";
 
 class RegistrationForm extends Component {
@@ -41,10 +41,7 @@ class RegistrationForm extends Component {
       <form className="registration-form" onSubmit={this.handleSubmit}>
         <div role="alert">{error && <p>{error}</p>}</div>
         <div>
-          <label htmlFor="registration-name-input">
-            Enter your name
-
-          </label>
+          <label htmlFor="registration-name-input">Enter your name</label>
           <input
             ref={this.firstInput}
             id="registration-name-input"
@@ -53,16 +50,11 @@ class RegistrationForm extends Component {
           />
         </div>
         <div>
-          <label htmlFor="registration-username-input">
-            Choose a username
-            
-          </label>
+          <label htmlFor="registration-username-input">Choose a username</label>
           <input id="registration-username-input" name="username" required />
         </div>
         <div>
-          <label htmlFor="registration-password-input">
-            Choose a password
-          </label>
+          <label htmlFor="registration-password-input">Choose a password</label>
           <input
             id="registration-password-input"
             name="password"

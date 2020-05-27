@@ -16,6 +16,7 @@ export default class LandingPage extends Component {
                 <li>Express your thoughts while you Bullet Journal</li>
                 <li>Express your sleep hrs</li>
                 <li>Express your daily to dos</li>
+                <li>Express your feelings</li>
               </ul>
             </div>
         </div>

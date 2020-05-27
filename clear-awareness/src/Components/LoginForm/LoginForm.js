@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { Input, Label } from "../Form/Form";
-import AuthApiService from "../../services/auth-api-service";
-import UserContext from "../../contexts/UserContext";
-import Button from "../Button/Button";
+import AuthApiService from "../../Services/auth-api-service";
+import UserContext from "../Context/UserContext";
+
 
 class LoginForm extends Component {
   static defaultProps = {
@@ -46,8 +45,8 @@ class LoginForm extends Component {
       <form className="LoginForm" onSubmit={this.handleSubmit}>
         <div role="alert">{error && <p>{error}</p>}</div>
         <div>
-          <Label htmlFor="login-username-input">Username</Label>
-          <Input
+          <label htmlFor="login-username-input">Username</label>
+          <input
             ref={this.firstInput}
             id="login-username-input"
             name="username"
@@ -55,15 +54,15 @@ class LoginForm extends Component {
           />
         </div>
         <div>
-          <Label htmlFor="login-password-input">Password</Label>
-          <Input
+          <label htmlFor="login-password-input">Password</label>
+          <input
             id="login-password-input"
             name="password"
             type="password"
             required
           />
         </div>
-        <Button type="submit">Login</Button>
+        <button type="submit">Login</button>
       </form>
     );
   }
