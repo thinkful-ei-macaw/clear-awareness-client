@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import AuthApiService from "../../Services/auth-api-service";
-import "./RegistrationForm.css";
+
 
 class RegistrationForm extends Component {
   static defaultProps = {

@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import AuthApiService from "../../Services/auth-api-service";
 import UserContext from "../Context/UserContext";
-import Button from '../Button/Button';
+
 
 class LoginForm extends Component {
   static defaultProps = {
-    onLoginSuccess: () => {},
+    onLoginSuccess: () => {console.log('Called Default On login')},
+    
   };
 
   static contextType = UserContext;
@@ -16,6 +17,7 @@ class LoginForm extends Component {
 
   handleSubmit = (ev) => {
     ev.preventDefault();
+
     const { username, password } = ev.target;
 
     this.setState({ error: null });
@@ -25,7 +27,7 @@ class LoginForm extends Component {
       password: password.value,
     })
       .then((res) => {
-        console.log('THIS IS AUTHTOKEN',res.authToken)
+        console.log("Success login!!!!!!")
         username.value = "";
         password.value = "";
         this.context.processLogin(res.authToken);
