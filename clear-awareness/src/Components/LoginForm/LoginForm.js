@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import AuthApiService from "../../Services/auth-api-service";
 import UserContext from "../Context/UserContext";
-
+import Button from '../Button/Button';
 
 class LoginForm extends Component {
   static defaultProps = {
@@ -25,6 +25,7 @@ class LoginForm extends Component {
       password: password.value,
     })
       .then((res) => {
+        console.log('THIS IS AUTHTOKEN',res.authToken)
         username.value = "";
         password.value = "";
         this.context.processLogin(res.authToken);

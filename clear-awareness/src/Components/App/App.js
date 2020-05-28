@@ -1,9 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import LandingPage from '../../Routes/LandingPage/LandingPage'
 import Header from '../Header/Header'
 import RegistrationForm from '../RegistrationForm/RegisrationForm'
 import LoginForm from '../LoginForm/LoginForm'
+import PublicOnlyRoute from '../../Routes/PublicOnlyRoute/PublicOnlyRoute';
+import PrivateRoute from '../../Routes/PrivateRoute/PrivateOnlyRoute';
 export default class App extends React.Component{
 render() {
   return(
@@ -11,17 +13,17 @@ render() {
     <Router>
      <Header />
       <Switch>
-        <Route 
+        <PublicOnlyRoute 
         exact 
         path={'/'}
         component={LandingPage}
         />
-        <Route 
+        <PublicOnlyRoute 
         exact
         path={'/register'}
         component={RegistrationForm}
         />
-        <Route 
+        <PublicOnlyRoute 
         exact
         path={'/login'}
         component={LoginForm} 
