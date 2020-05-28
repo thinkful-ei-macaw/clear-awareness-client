@@ -60,35 +60,18 @@ export class UserProvider extends Component {
     this.setState({ user });
   };
 
-  setLanguage = (language) => {
-    this.setState({ language });
-  };
 
-  setWords = (words) => {
-    this.setState({ words });
-  };
+ 
 
-  setUser = (user) => {
-    this.setState({ user });
-  };
+ 
 
-  setNextWord = (nextWord) => {
-    this.setState({ nextWord });
-  };
 
-  setTotalScore = (totalScore) => {
-    this.setState({ totalScore });
-  };
+ 
 
-  setCurrWord = (currWord) => {
-    this.setState({ currWord });
-  };
-
-  setGuess = (guess) => {
-    this.setState({ guess });
-  };
+ 
 
   processLogin = (authToken) => {
+    console.log(authToken)
     TokenService.saveAuthToken(authToken);
     const jwtPayload = TokenService.parseAuthToken();
     this.setUser({
@@ -138,16 +121,7 @@ export class UserProvider extends Component {
       setUser: this.setUser,
       processLogin: this.processLogin,
       processLogout: this.processLogout,
-      setLanguage: this.setLanguage,
-      language: this.state.language,
-      setWords: this.setWords,
-      guess: this.state.guess,
-      words: this.state.words,
-      nextWord: this.state.nextWord,
-      setNextWord: this.setNextWord,
-      setTotalScore: this.setTotalScore,
-      setCurrWord: this.setCurrWord,
-      setGuess: this.setGuess,
+
     };
     return (
       <UserContext.Provider value={value}>
