@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import LoginForm from "../../components/LoginForm/LoginForm";
-import "./LoginRoute.css";
+import LoginForm from "../../Components/LoginForm/LoginForm";
+
 
 class LoginRoute extends Component {
   static defaultProps = {
@@ -13,7 +13,7 @@ class LoginRoute extends Component {
   handleLoginSuccess = () => {
     console.log("this is a success")
     const { location, history } = this.props;
-    const destination = (location.state || {}).from || "/";
+    const destination = '/dashboard';
     history.push(destination);
   };
 
