@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import AuthApiService from "../../Services/auth-api-service";
-
+import "./RegistrationForm.css"
 
 class RegistrationForm extends Component {
   static defaultProps = {
@@ -41,8 +41,8 @@ class RegistrationForm extends Component {
     return (
       <form className="registration-form" onSubmit={this.handleSubmit}>
         <div role="alert">{error && <p>{error}</p>}</div>
-        <div>
-          <label htmlFor="registration-name-input">Enter your name</label>
+        <div className="input-box">
+          <label htmlFor="registration-name-input">Enter your name</label><br/>
           <input
             ref={this.firstInput}
             id="registration-name-input"
@@ -50,11 +50,11 @@ class RegistrationForm extends Component {
             required
           />
         </div>
-        <div>
+        <div className="input-box">
           <label htmlFor="registration-username-input">Choose a username</label>
           <input id="registration-username-input" name="username" required />
         </div>
-        <div>
+        <div className="input-box">
           <label htmlFor="registration-password-input">Choose a password</label>
           <input
             id="registration-password-input"
@@ -64,7 +64,7 @@ class RegistrationForm extends Component {
           />
         </div>
         <footer>
-          <button type="submit">Sign up</button>{" "}
+          <button className="signup" type="submit">Sign up</button>{" "}
           <Link to="/login">
             <button type="button" id="account">
               Already have an account?

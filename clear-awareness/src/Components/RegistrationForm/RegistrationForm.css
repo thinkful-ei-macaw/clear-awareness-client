@@ -1,0 +1,27 @@
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    margin-left: 29%;
+    margin-top: 75px;
+}
+
+.input-box {
+    margin-bottom: 30px
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    align-items: left;
+}
+
+.signup {
+    width: fit-content;
+    margin-left: 20%;
+    margin-bottom: 15px;
+}
+
+h2 {
+    text-align: center;
+}
