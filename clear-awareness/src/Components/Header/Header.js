@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './Header.css'
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import UserContext from '../Context/UserContext';
 import TokenService from '../../Services/token-service';
 
@@ -24,10 +24,10 @@ class Header extends Component {
   renderLogout() {
     return (
       <nav>
-        <Link onClick={this.handleLogoutClick} to="/login">
-          Logout
-        </Link>
-      </nav>
+          <Link onClick={this.handleLogoutClick} to="/login">
+            Logout
+          </Link>
+        </nav>
     )
   }
 
@@ -35,7 +35,7 @@ class Header extends Component {
     return (
       <section>
           <h1>Clear Mind</h1>
-            {TokenService.hasAuthToken() ? this.renderLogout() : this.renderLogin()}
+          {TokenService.hasAuthToken() ? this.renderLogout() : this.renderLogin()}
       </section>
     )
   }
