@@ -1,0 +1,17 @@
+.loginroute-container{
+    border: solid 4px rgba(0,0,0,0.5);
+    border-radius: 5px;
+    background-color: white;
+    font-family: 'Cormorant', serif;
+    text-align: center;
+    width: 23%;
+    margin-left: 37%;
+    padding: 20px;
+}
+
+input{
+    height: 30px;
+    width: 150px;
+    border: 1px solid rgba(0,0,0,0.5);
+    border-radius: 5px;
+}

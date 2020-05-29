@@ -6,7 +6,9 @@ import LoginRoute from '../../Routes/LoginRoute/LoginRoute';
 import PublicOnlyRoute from '../../Routes/PublicOnlyRoute/PublicOnlyRoute';
 import PrivateRoute from '../../Routes/PrivateRoute/PrivateOnlyRoute';
 import DashboardPage from '../../Routes/DashboardPage/DashboardPage';
-import LandingPage from '../../Routes/LandingPage/LandingPage'
+import LandingPage from '../../Routes/LandingPage/LandingPage';
+import JournalPage from '../../Routes/JournalRoute/JournalRoute';
+import JournalRoute from '../../Routes/JournalRoute/JournalRoute';
 export default class App extends React.Component{
 render() {
   return(
@@ -30,7 +32,7 @@ render() {
         path={'/login'}
         component={LoginRoute} 
         />
-        {/* <PrivateRoute exact path={'/dashboard'} component={DashboardPage}/> */}
+       <PrivateRoute exact path={'/journal'} component={JournalRoute}/>
       </Switch>
     </Router>
     </section>

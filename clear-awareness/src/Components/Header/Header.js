@@ -33,8 +33,9 @@ class Header extends Component {
 
   render() {
     return (
-      <section>
+      <section className="header">
           <h1>Clear Mind</h1>
+          <p className="express-yourself">Express yourself & get it all out.</p>
           {TokenService.hasAuthToken() ? this.renderLogout() : this.renderLogin()}
       </section>
     )

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import AuthApiService from "../../Services/auth-api-service";
 import UserContext from "../Context/UserContext";
+import "./LoginForm.css"
 
 
 class LoginForm extends Component {
@@ -27,7 +28,7 @@ class LoginForm extends Component {
       password: password.value,
     })
       .then((res) => {
-        console.log("Success login!!!!!!")
+       
         username.value = "";
         password.value = "";
         this.context.processLogin(res.authToken);
@@ -47,8 +48,8 @@ class LoginForm extends Component {
     return (
       <form className="LoginForm" onSubmit={this.handleSubmit}>
         <div role="alert">{error && <p>{error}</p>}</div>
-        <div>
-          <label htmlFor="login-username-input">Username</label>
+        <div className="input-box">
+          <label htmlFor="login-username-input">Username</label><br/>
           <input
             ref={this.firstInput}
             id="login-username-input"
@@ -56,8 +57,8 @@ class LoginForm extends Component {
             required
           />
         </div>
-        <div>
-          <label htmlFor="login-password-input">Password</label>
+        <div className="input-box">
+          <label htmlFor="login-password-input">Password</label><br/>
           <input
             id="login-password-input"
             name="password"
@@ -65,7 +66,7 @@ class LoginForm extends Component {
             required
           />
         </div>
-        <button type="submit">Login</button>
+        <button className="login" type="submit">Login</button>
       </form>
     );
   }

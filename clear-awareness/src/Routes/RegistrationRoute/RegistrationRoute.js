@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import RegistrationForm from "../../Components/RegistrationForm/RegistrationForm";
-
+import './RegistrationRoute.css'
 
 class RegistrationRoute extends Component {
   static defaultProps = {
@@ -18,7 +18,7 @@ class RegistrationRoute extends Component {
     return (
       <div className="RegistrationRoute">
         <div className="reg-wrapper">
-          <section>
+          <section className="registrationroute-container">
             <h2>Sign up</h2>
             <RegistrationForm
               onRegistrationSuccess={this.handleRegistrationSuccess}
