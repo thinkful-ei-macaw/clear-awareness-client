@@ -5,12 +5,14 @@ import IdleService from "../../Services/idle-service";
 
 const UserContext = React.createContext({
   user: {},
+  date: "",
   error: null,
   setError: () => {},
   clearError: () => {},
   setUser: () => {},
   processLogin: () => {},
   processLogout: () => {},
+  setDate: ()=>{}
 });
 
 export default UserContext;
@@ -62,7 +64,10 @@ export class UserProvider extends Component {
 
 
  
-
+  setDate = (date) => { 
+    console.log(date)
+    this.setState({ date });
+}
  
 
 
@@ -114,6 +119,7 @@ export class UserProvider extends Component {
 
   render() {
     const value = {
+      date: this.state.date,
       user: this.state.user,
       error: this.state.error,
       setError: this.setError,
@@ -121,7 +127,7 @@ export class UserProvider extends Component {
       setUser: this.setUser,
       processLogin: this.processLogin,
       processLogout: this.processLogout,
-
+      setDate: this.setDate
     };
     return (
       <UserContext.Provider value={value}>
