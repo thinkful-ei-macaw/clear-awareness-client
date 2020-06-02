@@ -4,7 +4,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import UserContext from "../../Components/Context/UserContext";
 import "./DashboardPage.css";
-
+import { format } from 'date-fns';
 export default class Dashboard extends Component {
   static contextType = UserContext;
 
@@ -17,7 +17,7 @@ export default class Dashboard extends Component {
 
   state = {
     quotes: [],
-    date: new Date(),
+    date: new Date()
   };
 
   componentDidMount() {
@@ -41,18 +41,20 @@ export default class Dashboard extends Component {
   };
 
   onClickDay = (date) => {
-    this.setState({ date });
-    this.redirectToJournalDate();
+    this.redirectToJournalDate(date);
     this.context.setDate({ date });
   };
-  redirectToJournalDate = () => {
+  redirectToJournalDate = (date) => {
     const { history } = this.props;
-    const destination = "/journal";
+    const destination = `/journal/${format(date, 'yyyy-MM-dd')}`;
     history.push(destination);
   };
 
   render() {
-    console.log(this.state.date);
+    
+    //put date in URL 
+    //parse and figure out date
+    //send json in YYYY-MM-DD format 
 
     const randomIndex = Math.floor(Math.random() * this.state.quotes.length);
     let newquote = this.state.quotes[randomIndex];
@@ -60,7 +62,7 @@ export default class Dashboard extends Component {
     return (
       <div className="centering">
         <div>
-          <h1>Dashboard: Mindfulness Center</h1>
+          <h1>Dashboard: Mindfulness Center.</h1>
           <p>Quote of the day</p>
         </div>
         <ul>{this.state.quotes.length === 0 ? [] : newquote.quotation}</ul>
@@ -71,6 +73,9 @@ export default class Dashboard extends Component {
             value={this.state.date}
           />
         </div>
+
+        <p>Cumulative data on sleep here</p>
+        <p>Cumulative data on emotions here</p>
       </div>
     );
   }
