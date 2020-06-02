@@ -1,18 +1,50 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types'
 import './JournalForm.css';
+import TokenService from '../../Services/token-service';
+import Config from '../../config';
+import { format } from "date-fns";
 export default class JournalForm extends Component {
   static propTypes = {
-    redirectToDashboard: PropTypes.func.isRequired
+    redirectToDashboard: PropTypes.func.isRequired,
+    date: PropTypes.instanceOf(Date).isRequired
   }
 
+  state = {
+    
+  }
+  
+  //will be using this function for submit handler, POST
+  createJournal = e => {
+    e.preventDefault();
+
+    fetch(`${Config.API_ENDPOINT}/api/journal/${format(this.props.date, 'yyyy-MM-dd')}`, {
+      method:'POST',
+      headers: {
+        'Authorization': `Bearer ${TokenService.getAuthToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        entry: e.target.journal.value,
+        mindful: e.target.mindfulAct.value,
+        date_created: format(this.props.date, 'yyyy-MM-dd'),
+        emotions: e.target.value.mood.value,
+      })
+    }).then((res) => 
+      !res.ok ? res.json().then((err) => Promise.reject(err)) : res.json() 
+    );
+  }
+  
   render() {
+
+    console.log('this is the date', this.props.date)
+
     return (
      
 
-        <form className="planning-block">
+        <form onSubmit={this.createJournal} className="planning-block">
           <div className="planning-block">
-            <div class="mood">
+            <div className="mood">
               <label htmlFor="mood">Mood</label>
               <label htmlFor="happy">Happy</label>
               <input type="radio" id="mood" name="mood" value="happy" />
@@ -32,11 +64,11 @@ export default class JournalForm extends Component {
               placeholder="How much did u sleep last night?"
             />
 
-            <label htmlFor="mindful-act">Mindful Act </label>
+            <label htmlFor="mindfulAct">Mindful Act </label>
             <input
               type="text"
-              id="mindful-act"
-              name="mindful-act"
+              id="mindfulAct"
+              name="mindfulAct"
               placeholder="mindful act?"
             />
 
@@ -48,13 +80,9 @@ export default class JournalForm extends Component {
               placeholder="Enter tasks"
             />
             <button className="addTask">add task</button>
-            <label htmlFor="journal-field">Your Thoughts Here</label>
-            <input
-              type="text"
-              id="journal"
-              name="journal-field"
-              placeholder="enter thoughts"
-            />
+
+            <label htmlFor="textarea">Your Thoughts Here</label>
+            <textarea id="textarea" name="textarea" rows="4" col="10" placeholder="Please place thoughts here."></textarea>
             <button className="buton">submit</button>
 
             <button
