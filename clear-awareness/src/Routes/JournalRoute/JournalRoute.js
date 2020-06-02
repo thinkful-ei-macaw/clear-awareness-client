@@ -3,6 +3,7 @@ import Journal from "../../Components/Journal/Journal";
 import JournalForm from "../../Components/JournalForm/JournalForm";
 import { parse } from "date-fns";
 import isValid from "date-fns/isValid";
+
 export default class JournalRoute extends React.Component {
   static defaultProps = {
     location: {},
@@ -12,7 +13,7 @@ export default class JournalRoute extends React.Component {
   };
 
   state = {
-    exist: false,
+    exist: true,
   };
 
   redirectToDashboard = () => {
@@ -32,9 +33,9 @@ export default class JournalRoute extends React.Component {
     return (
       <div>
         {this.state.exist ? (
-          <Journal date={this.date}/>
+          <Journal date={date}/>
         ) : (
-          <JournalForm redirectToDashboard={this.redirectToDashboard} />
+          <JournalForm date={date} redirectToDashboard={this.redirectToDashboard} />
         )}
       </div>
     );
