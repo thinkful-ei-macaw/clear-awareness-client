@@ -16,19 +16,19 @@ export default class JournalForm extends Component {
   
   //will be using this function for submit handler, POST
   createJournal = e => {
-    e.preventDefault();
-
-    fetch(`${Config.API_ENDPOINT}/api/journal/${format(this.props.date, 'yyyy-MM-dd')}`, {
+    fetch(`${Config.API_ENDPOINT}/api/journal/`, {
       method:'POST',
       headers: {
         'Authorization': `Bearer ${TokenService.getAuthToken()}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        entry: e.target.journal.value,
+        entry: e.target.textarea.value,
         mindful: e.target.mindfulAct.value,
+        tasks: e.target.tasks.value,
+        sleep_hours: e.target.sleep.value,
         date_created: format(this.props.date, 'yyyy-MM-dd'),
-        emotions: e.target.value.mood.value,
+        emotions: e.target.mood.value,
       })
     }).then((res) => 
       !res.ok ? res.json().then((err) => Promise.reject(err)) : res.json() 
@@ -47,13 +47,13 @@ export default class JournalForm extends Component {
             <div className="mood">
               <label htmlFor="mood">Mood</label>
               <label htmlFor="happy">Happy</label>
-              <input type="radio" id="mood" name="mood" value="happy" />
+              <input type="radio" id="mood" name="mood" value="1" />
               <label htmlFor="ok">Ok</label>
-              <input type="radio" id="mood" name="mood" value="Ok" />
+              <input type="radio" id="mood" name="mood" value="2" />
               <label htmlFor="fine">Fine</label>
-              <input type="radio" id="mood" name="mood" value="Fine" />
+              <input type="radio" id="mood" name="mood" value="3" />
               <label htmlFor="terrible">Terrible</label>
-              <input type="radio" id="mood" name="mood" value="Terrible" />
+              <input type="radio" id="mood" name="mood" value="4" />
             </div>
 
             <label htmlFor="sleep">Sleep</label>
