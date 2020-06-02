@@ -13,7 +13,7 @@ export default class JournalRoute extends React.Component {
   };
 
   state = {
-    exist: true,
+    exist: false,
   };
 
   redirectToDashboard = () => {
