@@ -32,7 +32,7 @@ render() {
         path={'/login'}
         component={LoginRoute} 
         />
-       <PrivateRoute exact path={'/journal'} component={JournalRoute}/>
+       <PrivateRoute exact path={'/journal/:date'} component={JournalRoute}/>
       </Switch>
     </Router>
     </section>

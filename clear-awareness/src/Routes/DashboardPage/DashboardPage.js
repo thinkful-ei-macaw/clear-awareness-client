@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import Config from "../../config";
 import Calendar from "react-calendar";
-import 'react-calendar/dist/Calendar.css';
+import "react-calendar/dist/Calendar.css";
+import UserContext from "../../Components/Context/UserContext";
+import "./DashboardPage.css";
+import { format } from 'date-fns';
 export default class Dashboard extends Component {
+  static contextType = UserContext;
 
   static defaultProps = {
     location: {},
@@ -13,7 +17,7 @@ export default class Dashboard extends Component {
 
   state = {
     quotes: [],
-    date: new Date(),
+    date: new Date()
   };
 
   componentDidMount() {
@@ -31,36 +35,47 @@ export default class Dashboard extends Component {
       })
       .catch((error) => console.error(error));
   }
-  onChange = (date => {
-    this.setState({ date }) 
-    console.log(this.state.date)})
+  onChange = (date) => {
+    this.setState({ date });
+    console.log(this.state.date);
+  };
 
-  onClickDay = (date =>{
-    this.setState({ date }) 
-    this.redirectToJournalDate();
-  })
-  redirectToJournalDate = () => {
+  onClickDay = (date) => {
+    this.redirectToJournalDate(date);
+    this.context.setDate({ date });
+  };
+  redirectToJournalDate = (date) => {
     const { history } = this.props;
-    const destination = '/journal';
+    const destination = `/journal/${format(date, 'yyyy-MM-dd')}`;
     history.push(destination);
   };
 
   render() {
-    console.log(this.state.quotes);
-
-    const randomIndex = Math.floor((Math.random() * this.state.quotes.length))
-    let newquote = this.state.quotes[randomIndex]
     
-  
+    //put date in URL 
+    //parse and figure out date
+    //send json in YYYY-MM-DD format 
+
+    const randomIndex = Math.floor(Math.random() * this.state.quotes.length);
+    let newquote = this.state.quotes[randomIndex];
 
     return (
-      <div>
-        <h1>Dashboard: Mindfulness Center</h1>
-        <p>Quote of the day</p>
-        <ul>{this.state.quotes.length === 0 ? [] : newquote.quotation}</ul>
+      <div className="centering">
         <div>
-          <Calendar onChange={this.onChange} onClickDay={this.onClickDay} value={this.state.date} />
+          <h1>Dashboard: Mindfulness Center.</h1>
+          <p>Quote of the day</p>
         </div>
+        <ul>{this.state.quotes.length === 0 ? [] : newquote.quotation}</ul>
+        <div className="calender">
+          <Calendar
+            onChange={this.onChange}
+            onClickDay={this.onClickDay}
+            value={this.state.date}
+          />
+        </div>
+
+        <p>Cumulative data on sleep here</p>
+        <p>Cumulative data on emotions here</p>
       </div>
     );
   }
