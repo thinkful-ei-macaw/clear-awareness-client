@@ -1,5 +1,6 @@
 import React from "react";
 import Config from "../../config";
+import TokenService from "../../Services/token-service";
 import {
   LineChart,
   Line,
@@ -22,12 +23,19 @@ export default class Graphs extends React.Component {
   }
 
   getData() {
-    return fetch(`${Config.API_ENDPOINT}/api/journal/all`)
+    return fetch(`${Config.API_ENDPOINT}/api/journal`, {
+      headers: {
+        Authorization: `Bearer ${TokenService.getAuthToken()}`,
+        "Content-Type": "application/json",
+      },
+    })
       .then((res) =>
         !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
       )
       .then((data) => {
-        const sleep = data.map((x) => x.sleep_hours);
+        const sleep = data.map((x) => {
+          return { name: x.date_created, value: x.sleep_hours };
+        });
         const emotions = data.map((x) => x.emotions);
         this.setState({ sleep: sleep, emotions: emotions });
       })
@@ -35,6 +43,7 @@ export default class Graphs extends React.Component {
   }
 
   render() {
+    console.log(this.state.sleep);
     return (
       <div className="main-graph">
         <div style={{ width: "calc(100vw - 20px)", height: 300 }}>
@@ -48,7 +57,7 @@ export default class Graphs extends React.Component {
               />
               <YAxis
                 name="Hours"
-                type="number"
+                dataKey="value"
                 fontSize="20px"
                 domain={[0, 24]}
               />
@@ -56,7 +65,7 @@ export default class Graphs extends React.Component {
 
               <Line
                 type="monotone"
-                dataKey="weight"
+                dataKey="value"
                 stroke="#8884d8"
                 activeDot={{ r: 8 }}
               />
