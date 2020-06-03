@@ -12,6 +12,15 @@ export default class Journal extends React.Component {
     date: PropTypes.instanceOf(Date).isRequired,
   };
 
+  state = {
+    date: "",
+    emotions: "",
+    mindful: "",
+    sleep_hours: 0,
+    tasks: "",
+    entry: "",
+  };
+
   //fetch request for journal
   componentDidMount() {
     this.getJournalData();
@@ -38,7 +47,14 @@ export default class Journal extends React.Component {
       })
       .then((data) => {
         console.log("this is the data", data);
-
+        this.setState({
+          date: data[0].date_created,
+          emotions: data[0].emotions,
+          entry: data[0].entry,
+          mindful: data[0].mindful,
+          sleep_hours: data[0].sleep_hours,
+          tasks: data[0].tasks,
+        });
         //set state for the info
       })
       .catch((error) => console.log({ error }));
@@ -61,12 +77,20 @@ export default class Journal extends React.Component {
   }
 
   render() {
+
+    console.log(this.state.entry)
     return (
       <div>
         <h1>Journal</h1>
         <div className="container">
           <div className="day">
             <p>{this.props.date.toString()}</p>
+            <p>{this.state.date}</p>
+            <p>{this.state.emotions}</p>
+            <p>{this.state.mindful}</p>
+            <p>{this.state.sleep_hours}</p>
+            <p>{this.state.tasks}</p>
+            <p>{this.state.entry}</p>
           </div>
         </div>
       </div>
