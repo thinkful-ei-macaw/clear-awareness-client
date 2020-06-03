@@ -1,4 +1,5 @@
 import React from "react";
+import Config from "../../config";
 import {
   LineChart,
   Line,
@@ -21,7 +22,7 @@ export default class Graphs extends React.Component {
   }
 
   getData() {
-    return fetch(`${Config.API_ENDPOINT}/api/sleep`)
+    return fetch(`${Config.API_ENDPOINT}/api/journal/all`)
       .then((res) =>
         !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
       )
@@ -49,7 +50,7 @@ export default class Graphs extends React.Component {
                 name="Hours"
                 type="number"
                 fontSize="20px"
-                domain={[0, 15]}
+                domain={[0, 24]}
               />
               <Tooltip />
 
