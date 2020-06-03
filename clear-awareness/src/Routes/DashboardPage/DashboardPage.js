@@ -4,7 +4,8 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import UserContext from "../../Components/Context/UserContext";
 import "./DashboardPage.css";
-import { format } from 'date-fns';
+import { format } from "date-fns";
+import Graphs from "../../Components/Graphs/graphs";
 export default class Dashboard extends Component {
   static contextType = UserContext;
 
@@ -17,7 +18,7 @@ export default class Dashboard extends Component {
 
   state = {
     quotes: [],
-    date: new Date()
+    date: new Date(),
   };
 
   componentDidMount() {
@@ -46,15 +47,14 @@ export default class Dashboard extends Component {
   };
   redirectToJournalDate = (date) => {
     const { history } = this.props;
-    const destination = `/journal/${format(date, 'yyyy-MM-dd')}`;
+    const destination = `/journal/${format(date, "yyyy-MM-dd")}`;
     history.push(destination);
   };
 
   render() {
-    
-    //put date in URL 
+    //put date in URL
     //parse and figure out date
-    //send json in YYYY-MM-DD format 
+    //send json in YYYY-MM-DD format
 
     const randomIndex = Math.floor(Math.random() * this.state.quotes.length);
     let newquote = this.state.quotes[randomIndex];
@@ -72,6 +72,9 @@ export default class Dashboard extends Component {
             onClickDay={this.onClickDay}
             value={this.state.date}
           />
+        </div>
+        <div className="graphs">
+          <Graphs />
         </div>
 
         <p>Cumulative data on sleep here</p>

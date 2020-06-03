@@ -1,3 +1,4 @@
+import React from "react";
 import {
   LineChart,
   Line,
@@ -15,7 +16,9 @@ export default class Graphs extends React.Component {
     emtions: [],
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.getData();
+  }
 
   getData() {
     return fetch(`${Config.API_ENDPOINT}/api/sleep`)
@@ -24,7 +27,7 @@ export default class Graphs extends React.Component {
       )
       .then((data) => {
         const sleep = data.map((x) => x.sleep_hours);
-        const emotions = data.map((x) => x.emtions);
+        const emotions = data.map((x) => x.emotions);
         this.setState({ sleep: sleep, emotions: emotions });
       })
       .catch((error) => console.error(error));
