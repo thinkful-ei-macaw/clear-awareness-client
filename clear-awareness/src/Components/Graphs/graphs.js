@@ -2,6 +2,11 @@ import React from "react";
 import Config from "../../config";
 import TokenService from "../../Services/token-service";
 import {
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  PolarRadiusAxis,
+  Radar,
   LineChart,
   Line,
   XAxis,
@@ -15,7 +20,7 @@ import {
 export default class Graphs extends React.Component {
   state = {
     sleep: [],
-    emtions: [],
+    emotions: [],
   };
 
   componentDidMount() {
@@ -42,8 +47,43 @@ export default class Graphs extends React.Component {
       .catch((error) => console.error(error));
   }
 
+  findEmotionData() {
+    const base = this.state.emotions.length;
+    const happy = this.state.emotions.filter((x) => x === "1");
+    console.log(happy);
+    const okay = this.state.emotions.filter((x) => x === "2");
+    console.log(okay);
+    const notGreat = this.state.emotions.filter((x) => x === "3");
+    console.log(notGreat);
+    const sad = this.state.emotions.filter((x) => x === "4");
+    console.log(sad);
+    const data = [
+      {
+        subject: "Happiness",
+        A: happy.length,
+        fullMark: base,
+      },
+      {
+        subject: "Okay",
+        A: okay.length,
+        fullMark: base,
+      },
+      {
+        subject: "Not Great",
+        A: notGreat.length,
+        fullMark: base,
+      },
+      {
+        subject: "Sad",
+        A: sad.length,
+        fullMark: base,
+      },
+    ];
+    return data;
+  }
+
   render() {
-    console.log(this.state.sleep);
+    console.log(this.state);
     return (
       <div className="main-graph">
         <div style={{ width: "calc(100vw - 20px)", height: 300 }}>
@@ -72,7 +112,27 @@ export default class Graphs extends React.Component {
             </LineChart>
           </ResponsiveContainer>
         </div>
-
+        <RadarChart
+          outerRadius={90}
+          width={730}
+          height={250}
+          data={this.findEmotionData()}
+        >
+          <PolarGrid />
+          <PolarAngleAxis dataKey="subject" />
+          <PolarRadiusAxis
+            angle={30}
+            domain={[0, this.state.emotions.length + 1]}
+          />
+          <Radar
+            name="Emotions"
+            dataKey="A"
+            stroke="#8884d8"
+            fill="#8884d8"
+            fillOpacity={0.6}
+          />
+          <Legend />
+        </RadarChart>
         {/* insert pie chart here */}
       </div>
     );
