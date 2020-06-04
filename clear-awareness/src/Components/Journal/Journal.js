@@ -135,11 +135,15 @@ export default class Journal extends React.Component {
   }
 
   render() {
+
+    console.log('Hellllooooooo test')
+
     return (
       <div className="journal-wrapper">
         <div className="journal-container">
           <div className="day">
             <h1>Journal</h1>
+            <p>test</p>
             <p>
               <span className="text-style">Today's date</span> {this.state.date}
             </p>
