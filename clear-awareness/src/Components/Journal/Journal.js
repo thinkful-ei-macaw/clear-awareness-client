@@ -19,7 +19,7 @@ export default class Journal extends React.Component {
     emotions: "",
     mindful: "",
     sleep_hours: 0,
-    tasks: "",
+    tasks: [],
     entry: "",
     error: null,
     editFields: false,
