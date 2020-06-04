@@ -14,7 +14,9 @@ export default class JournalForm extends Component {
   }
 
   state = {
-    tasks: []
+    tasks: [],
+    edit: false,
+    number: null
   }
   
   //will be using this function for submit handler, POST
@@ -49,6 +51,43 @@ export default class JournalForm extends Component {
       this.setState({tasks: tasks});
     }
 
+  }
+
+  handleEditTask = e => {
+    e.preventDefault();
+
+    let task = e.target.parentElement.parentElement.id;
+
+    this.setState({edit: true, number: task});
+    //access value
+    //edit value
+  }
+
+  handleInputEdit = e => {
+    e.preventDefault();
+    let task = this.state.number;
+    let tasks = this.state.tasks;
+
+    if (document.getElementById("edit-input").value.length !== 0) {
+      tasks[task] = document.getElementById("edit-input").value;
+      this.setState({edit: false, number: null, tasks: tasks});
+    }
+  }
+
+  handleDeleteTask = e => {
+    e.preventDefault();
+
+    //delete value from array
+    let tasks = this.state.tasks;
+    let task = e.target.parentElement.parentElement.id;
+    
+    tasks.splice(task, 1);
+    this.setState({tasks: tasks});
+  }
+
+  handleCancel = e => {
+    e.preventDefault();
+    this.setState({edit: false, number: null});
   }
   
   render() {
@@ -131,8 +170,31 @@ export default class JournalForm extends Component {
 
         <div className="display-task">
           {(this.state.tasks.length === 0) ? <h1></h1> : <h2>Tasks</h2>}
+          {(this.state.edit) 
+            ? 
+            <div className="edit-input">
+              <input type="text" id="edit-input" name="edit-input" placeholder="Edit Task Here" />
+              <div className="input-cancel">
+                <button onClick={this.handleInputEdit}>Confirm</button>
+                <button onClick={this.handleCancel}>Cancel</button>
+              </div>
+            </div> 
+            : 
+            <div>
+            </div>
+          }
           <ul className="task-list">
-            {this.state.tasks.map((task, index) => <li key={index}>{task}</li>)}
+            {this.state.tasks.map((task, index) => 
+              <li id={index} key={index}>
+                <p>
+                {task}
+                </p>
+                <div className="edit-delete">
+                  <button onClick={this.handleEditTask}>Edit</button>
+                  <button onClick={this.handleDeleteTask}>Delete</button>
+                </div>
+              </li>
+            )}
           </ul>
         </div>
       </div>

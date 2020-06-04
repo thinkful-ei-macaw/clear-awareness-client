@@ -86,4 +86,12 @@ textarea {
 .task-list li {
     text-decoration: none;
     list-style-type: none;
+    display: flex;
+    justify-content: space-between;
 }
+
+.task-list li p {
+    margin: 0;
+    line-break: strict;
+}
+
