@@ -51,11 +51,11 @@ class RegistrationForm extends Component {
           />
         </div>
         <div className="input-box">
-          <label htmlFor="registration-username-input">Choose a username</label>
+          <label htmlFor="registration-username-input">Choose a username</label><br/>
           <input id="registration-username-input" name="username" required />
         </div>
         <div className="input-box">
-          <label htmlFor="registration-password-input">Choose a password</label>
+          <label htmlFor="registration-password-input">Choose a password</label><br/>
           <input
             id="registration-password-input"
             name="password"

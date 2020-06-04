@@ -4,9 +4,17 @@
     background-color: white;
     font-family: 'Cormorant', serif;
     text-align: center;
-    width: 23%;
-    margin-left: 37%;
+    width: 75%;
     padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login-wrapper{
+    display: flex;
+    justify-content: center;
 }
 
 input{
@@ -15,3 +23,4 @@ input{
     border: 1px solid rgba(0,0,0,0.5);
     border-radius: 5px;
 }
+

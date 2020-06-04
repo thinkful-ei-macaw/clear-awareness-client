@@ -59,7 +59,7 @@ export default class JournalRoute extends React.Component {
     return (
       <div>
         {this.state.exist ? (
-          <Journal date={date}/>
+          <Journal date={date} redirectToDashboard={this.redirectToDashboard}/>
         ) : (
           <JournalForm date={date} redirectToDashboard={this.redirectToDashboard} />
         )}
