@@ -102,7 +102,7 @@ export default class JournalForm extends Component {
             <legend>Mood</legend>
             <div className="emoji">
               <label htmlFor="happy">
-                <input type="radio" name="mood" id="happy" value="1" required/>
+                <input type="radio" name="mood" id="happy" value="1" defaultChecked />
                 <i className="fas fa-grin"></i>
               </label>
               <label htmlFor="ok">
@@ -114,7 +114,7 @@ export default class JournalForm extends Component {
                 <i className="fas fa-frown"></i>
               </label>
               <label htmlFor="terrible">
-                <input type="radio" name="mood" id="terrible" value="4"/>
+                <input type="radio" name="mood" id="terrible" value="4" />
                 <i className="fas fa-sad-tear"></i>
               </label>
             </div>
