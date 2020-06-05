@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from "react-dom";
 import JournalRoute from './JournalRoute';
-import { parse } from 'date-fns';
 import { MemoryRouter } from 'react-router-dom';
 
 it("renders without crashing", () => {
