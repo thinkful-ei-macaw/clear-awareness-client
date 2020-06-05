@@ -1,11 +1,27 @@
+.form-container {
+    border: solid 4px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    background-color: white;
+    font-family: "Cormorant", serif;
+    text-align: center;
+    display:flex;
+    width: 75%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    margin: 0 auto;
+}
+
 .journal-form {
     display: flex;
     flex-direction: column;
-    margin-left: 15%;
     margin-right: 15%;
+    margin-left: 15%;
 }
 
 .mood {
+    margin-top: 15px;
     outline: none;
     border: none;
 }
@@ -33,11 +49,10 @@
 }
 
 .mood input[type="radio"]:checked + i {
-    outline: 2px solid #f00;
+    outline: 2px solid teal;
 }
 
 .journal-form button {
-    /* Styling Buttons Go Here*/
     cursor: pointer;
 }
 
@@ -67,7 +82,7 @@
     border-radius: 5px;
 }
 
-.sleep-input input[type="text"], .mindful-input input[type="text"], .task-input input[type="text"], .textarea-input input[type="text"], .edit-input input[type="text"] {
+.sleep-input input[type="number"], .mindful-input input[type="text"], .task-input input[type="text"], .textarea-input input[type="text"], .edit-input input[type="text"] {
     display: block;
     width: inherit + 2rem;
     margin: 0 auto;
@@ -108,6 +123,10 @@ textarea {
     overflow: wrap;
 }
 
+.edit-input {
+    margin-top: 1em;
+}
+
 .edit-input input[type="text"]{
     text-align: center;
 }
@@ -119,20 +138,25 @@ textarea {
 
 .input-cancel button {
     font-size: 16px;
+    font-family: "Cormorant", serif;
     font-weight: 600;
-    border: 1px solid black;
+    border: solid 2px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
     padding: 0.5em 0.5em;
-    background-color: transparent;
+}
+
+.button-input {
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .button-input button, .task-input button {
     font-size: 16px;
+    font-family: "Cormorant", serif;
     font-weight: 600;
-    padding: 0.5em 1.5em;
-    border: 1px solid black;
+    border: solid 2px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
-    background-color: transparent;
+    padding: 0.5em 1.5em;
 }
 
 .edit-delete {
@@ -143,8 +167,17 @@ textarea {
 
 .edit-delete button {
     font-size: 16px;
+    font-family: "Cormorant", serif;
+    font-weight: 600;
     margin-left: 5px;
-    border: 1px solid black;
+    border: solid 2px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
-    background-color: transparent;
 }
+
+#add-task-button:hover, #confirm-button:hover, 
+#cancel-button:hover, #delete-button:hover,
+#edit-button:hover, #go-back-button:hover,
+#submit-button:hover {
+    background-color: teal;   
+}
+
