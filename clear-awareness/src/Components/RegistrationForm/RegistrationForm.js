@@ -63,7 +63,7 @@ class RegistrationForm extends Component {
             required
           />
         </div>
-        <div className="centering">
+        <div className="center">
           <button className="registration-btn" type="submit">Sign up</button>{" "}
           <Link to="/login">
             <button type="button" className="registration-btn" id="account">
