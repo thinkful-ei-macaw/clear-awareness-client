@@ -1,5 +1,6 @@
 import React from "react";
 import Config from "../../config";
+import "./graphs.css";
 import TokenService from "../../Services/token-service";
 import {
   RadarChart,
@@ -39,7 +40,8 @@ export default class Graphs extends React.Component {
       )
       .then((data) => {
         const sleep = data.map((x) => {
-          return { name: x.date_created, value: x.sleep_hours };
+          let newDate = x.date_created.slice(5);
+          return { name: newDate, value: x.sleep_hours };
         });
         const emotions = data.map((x) => x.emotions);
         this.setState({ sleep: sleep, emotions: emotions });
@@ -86,14 +88,18 @@ export default class Graphs extends React.Component {
     console.log(this.state);
     return (
       <div className="main-graph">
-        <div style={{ width: "calc(100vw - 20px)", height: 300 }}>
+        <div
+          className="linegraph"
+          style={{ width: "calc(90vw - 20px)", height: 200 }}
+        >
+          <h3 className="sleep">Sleep patterns (Past week)</h3>
           <ResponsiveContainer>
             <LineChart className="Graph" data={this.state.sleep}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis
-                fontSize="20px"
+                fontSize="15px"
                 dataKey="name"
-                padding={{ left: 30, right: 30 }}
+                // padding={{ left: 30, right: 30 }}
               />
               <YAxis
                 name="Hours"
@@ -112,9 +118,10 @@ export default class Graphs extends React.Component {
             </LineChart>
           </ResponsiveContainer>
         </div>
+        <h3>Emotion Mapping</h3>
         <RadarChart
           outerRadius={90}
-          width={730}
+          width={350}
           height={250}
           data={this.findEmotionData()}
         >

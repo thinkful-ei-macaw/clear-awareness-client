@@ -1,20 +1,22 @@
 .header {
-    text-align: center;
-    font-family: 'Cormorant', serif;
+  text-align: center;
+  font-family: "Cormorant", serif;
+  align-content: center;
+  width: stretch;
 }
 
 h1 {
-    font-size: 30px;
-    margin-bottom: 0;
+  font-size: 30px;
+  margin-bottom: 0;
 }
 
 nav {
-    font-family: 'Cormorant', serif;
-    position: absolute;
-    top:0;
-    left:0;
+  font-family: "Cormorant", serif;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
-.express-yourself{
-    font-family: 'Cedarville Cursive', cursive;
-    font-size:20px;
+.express-yourself {
+  font-family: "Cedarville Cursive", cursive;
+  font-size: 20px;
 }

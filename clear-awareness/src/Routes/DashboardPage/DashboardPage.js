@@ -60,25 +60,34 @@ export default class Dashboard extends Component {
     let newquote = this.state.quotes[randomIndex];
 
     return (
-      <div className="centering">
-        <div>
-          <h1>Dashboard: Mindfulness Center.</h1>
-          <p>Quote of the day</p>
+      <div className="dash">
+        <div className="centering">
+          <div>
+            <h1>Dashboard: Mindfulness Center</h1>
+            <p>Mindful Quote</p>
+          </div>
+          <ul>
+            {this.state.quotes.length === 0 ? (
+              []
+            ) : (
+              <p>
+                "{newquote.quotation}" <br />
+                --{newquote.author}
+              </p>
+            )}
+          </ul>
+          <div className="calender">
+            <Calendar
+              className="calendars"
+              onChange={this.onChange}
+              onClickDay={this.onClickDay}
+              value={this.state.date}
+            />
+          </div>
+          <div className="graphs">
+            <Graphs />
+          </div>
         </div>
-        <ul>{this.state.quotes.length === 0 ? [] : newquote.quotation}</ul>
-        <div className="calender">
-          <Calendar
-            onChange={this.onChange}
-            onClickDay={this.onClickDay}
-            value={this.state.date}
-          />
-        </div>
-        <div className="graphs">
-          <Graphs />
-        </div>
-
-        <p>Cumulative data on sleep here</p>
-        <p>Cumulative data on emotions here</p>
       </div>
     );
   }
