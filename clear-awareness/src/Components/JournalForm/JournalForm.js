@@ -81,8 +81,9 @@ export default class JournalForm extends Component {
     let task = e.target.parentElement.parentElement.id;
 
     tasks.splice(task, 1);
-    this.setState({ tasks: tasks });
-  };
+
+    this.setState({tasks: tasks, edit: false, number: false});
+  }
 
   handleCancel = (e) => {
     e.preventDefault();
@@ -93,121 +94,115 @@ export default class JournalForm extends Component {
     console.log("this is the date", this.props.date);
     //happy, ok, fine, terrible
     return (
+    <div className="form-container">
       <form onSubmit={this.createJournal} className="journal-form">
-        <fieldset className="mood">
-          <legend>Mood</legend>
-          <div className="emoji">
-            <label htmlFor="happy">
-              <input
-                type="radio"
-                name="mood"
-                id="happy"
-                value="1"
-                defaultChecked
-              />
-              <i className="fas fa-grin"></i>
-            </label>
-            <label htmlFor="ok">
-              <input type="radio" name="mood" id="ok" value="2" />
-              <i className="fas fa-smile"></i>
-            </label>
-            <label htmlFor="fine">
-              <input type="radio" name="mood" id="fine" value="3" />
-              <i className="fas fa-frown"></i>
-            </label>
-            <label htmlFor="terrible">
-              <input type="radio" name="mood" id="terrible" value="4" />
-              <i className="fas fa-sad-tear"></i>
-            </label>
-          </div>
-        </fieldset>
-
-        <div className="sleep-input">
-          <label htmlFor="sleep">Sleep</label>
-          <input
-            type="text"
-            id="sleep"
-            name="sleep"
-            placeholder="How much did u sleep last night?"
-          />
-        </div>
-
-        <div className="mindful-input">
-          <label htmlFor="mindfulAct">Mindful Act </label>
-          <input
-            type="text"
-            id="mindfulAct"
-            name="mindfulAct"
-            placeholder="Mindful Act?"
-          />
-        </div>
-
-        <div className="task-input">
-          <label htmlFor="tasks">Tasks</label>
-          <input
-            type="text"
-            id="task-input"
-            name="tasks"
-            placeholder="Enter Tasks Here"
-          />
-          <button className="addTask" onClick={this.addTask}>
-            Add Task
-          </button>
-        </div>
-
-        <div className="display-task">
-          {this.state.tasks.length === 0 ? "" : <h2>Tasks</h2>}
-          {this.state.edit ? (
-            <div className="edit-input">
-              <input
-                type="text"
-                id="edit-input"
-                name="edit-input"
-                placeholder="Edit Task Here"
-              />
-              <div className="input-cancel">
-                <button onClick={this.handleInputEdit}>Confirm Edit</button>
-                <button onClick={this.handleCancel}>Cancel Edit</button>
-              </div>
+          <fieldset className="mood">
+            <legend>Mood</legend>
+            <div className="emoji">
+              <label htmlFor="happy">
+                <input type="radio" name="mood" id="happy" value="1" defaultChecked />
+                <i className="fas fa-grin"></i>
+              </label>
+              <label htmlFor="ok">
+                <input type="radio" name="mood" id="ok" value="2" />
+                <i className="fas fa-smile"></i>
+              </label>
+              <label htmlFor="fine">
+                <input type="radio" name="mood" id="fine" value="3" />
+                <i className="fas fa-frown"></i>
+              </label>
+              <label htmlFor="terrible">
+                <input type="radio" name="mood" id="terrible" value="4" />
+                <i className="fas fa-sad-tear"></i>
+              </label>
             </div>
-          ) : (
-            <div></div>
-          )}
-          <ul className="task-list">
-            {this.state.tasks.map((task, index) => (
-              <li id={index} key={index}>
-                <p>{task}</p>
-                <div className="edit-delete">
-                  <button onClick={this.handleEditTask}>Edit</button>
-                  <button onClick={this.handleDeleteTask}>Delete</button>
+          </fieldset>
+
+          <div className="sleep-input">
+            <label htmlFor="sleep">Sleep</label>
+            <input
+              type="number"
+              id="sleep"
+              name="sleep"
+              min="0"
+              max="24"
+              step="1"
+              placeholder="How much did u sleep last night?"
+              required
+            />
+          </div>
+
+          <div className="mindful-input">
+            <label htmlFor="mindfulAct">Mindful Act </label>
+            <input
+              type="text"
+              id="mindfulAct"
+              name="mindfulAct"
+              placeholder="Mindful Act?"
+              maxlength="250"
+              required
+            />
+          </div>
+
+          <div className="task-input">
+            <label htmlFor="tasks">Tasks</label>
+            <input
+              type="text"
+              id="task-input"
+              name="tasks"
+              placeholder="Enter Tasks Here"
+              maxlength="250"
+            />
+            <button className="addTask" id="add-task-button" onClick={this.addTask} >Add Task</button>
+          </div>
+
+          <div className="display-task">
+            {(this.state.edit) 
+              ? 
+              <div className="edit-input">
+                <input type="text" id="edit-text-input" name="edit-text-input" placeholder={`Task Title: ${document.getElementById(`task-${this.state.number}`).textContent}`} />
+                <div className="input-cancel">
+                  <button name="confirm-button" id="confirm-button" onClick={this.handleInputEdit}>Confirm Edit</button>
+                  <button name="cancel-button" id="cancel-button" onClick={this.handleCancel}>Cancel Edit</button>
                 </div>
-              </li>
-            ))}
-          </ul>
-        </div>
+              </div> 
+              : 
+              <div>
+              </div>
+            }
+            <ul className="task-list">
+              {this.state.tasks.map((task, index) => 
+                <li id={index} key={index}>
+                <p id={`task-${index}`}>
+                {task}
+                </p>
+                <div className="edit-delete">
+                  <button name="edit-button" id="edit-button" onClick={this.handleEditTask}>Edit</button>
+                  <button name="edit-button" id="delete-button" onClick={this.handleDeleteTask}>Delete</button>
+                </div>
+                </li>
+              )}
+            </ul>
+          </div>
+          
+          <div className="textarea-input">
+            <label htmlFor="textarea">Your Thoughts Here</label>
+            <textarea id="textarea" name="textarea" rows="13" col="10" placeholder="Please place thoughts here." maxLength="500"></textarea>
+          </div>
 
-        <div className="textarea-input">
-          <label htmlFor="textarea">Your Thoughts Here</label>
-          <textarea
-            id="textarea"
-            name="textarea"
-            rows="15"
-            col="10"
-            placeholder="Please place thoughts here."
-          ></textarea>
-        </div>
-
-        <div className="button-input">
+          <div className="button-input">
           <button
-            className="button"
-            type="submit"
-            onClick={this.props.redirectToDashboard}
-          >
-            Go Back
-          </button>
-          <button className="button">Submit</button>
-        </div>
+              className="button"
+              type="submit"
+              id="go-back-button"
+              onClick={this.props.redirectToDashboard}
+            >
+              Go Back
+            </button>
+            <button className="button" id="submit-button">Submit</button>
+          </div>
       </form>
+    </div>
     );
   }
 }
