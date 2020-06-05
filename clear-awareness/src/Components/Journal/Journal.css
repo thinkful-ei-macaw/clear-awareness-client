@@ -11,6 +11,27 @@
   flex-direction: column;
   padding: 20px;
 }
+
+.face-style:hover{
+  color:teal;
+}
+.face-style{
+  cursor:pointer
+}
+.face-style--visited{
+  background-color:goldenrod;
+}
+
+#textarea-style{
+  margin-bottom: 10px;
+  border-radius:5px;
+  
+}
+
+.listing{
+  list-style-type: none;
+}
+
 .text-style{
   font-weight: bold;
 }
@@ -20,6 +41,7 @@
   font-family: "Cormorant", serif;
   text-align: center;
   margin-bottom: 10px;
+  padding: 5px;
 }
 
 .journal-btn:hover {
@@ -36,4 +58,9 @@
   justify-content: center;
   flex-direction: column;
 
+}
+
+textarea {
+  resize: none;
+  text-align: center;
 }
