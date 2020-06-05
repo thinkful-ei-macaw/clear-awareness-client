@@ -204,6 +204,7 @@ export default class Journal extends React.Component {
             {this.state.editFields ? (
               <input
                 type="text"
+                maxlength="100"
                 value={this.state.mindful}
                 id="mindful"
                 name="mindful"
@@ -221,6 +222,8 @@ export default class Journal extends React.Component {
                 value={this.state.sleep_hours}
                 id="sleep-hrs"
                 name="sleep-hrs"
+                min="0"
+                max="24"
               />
             ) : (
               <p>{this.state.sleep_hours} hours</p>
@@ -233,6 +236,7 @@ export default class Journal extends React.Component {
                 value={this.state.tasks}
                 id="tasks"
                 name="tasks"
+                maxlength="200"
               />
             ) : (
               <p>
@@ -252,6 +256,7 @@ export default class Journal extends React.Component {
                 name="textarea-style"
                 row="5"
                 col="15"
+                maxlength="500"
                 value={this.state.entry}
                 onChange={(e) => this.updateEntry(e.target.value)}
               >
