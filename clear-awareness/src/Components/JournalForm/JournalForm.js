@@ -152,11 +152,11 @@ export default class JournalForm extends Component {
           </div>
 
           <div className="display-task">
-            {(this.state.tasks.length === 0) ? "" : <h2>Tasks</h2>}
+            {(this.state.tasks.length === 0 && (this.state.number)) ? "" : <h2>Tasks</h2>}
             {(this.state.edit) 
               ? 
               <div className="edit-input">
-                <input type="text" id="edit-input" name="edit-input" placeholder="Edit Task Here" />
+                <input type="text" id="edit-input" name="edit-input" placeholder={`${document.getElementById(`task-${this.state.number}`).textContent}`} />
                 <div className="input-cancel">
                   <button onClick={this.handleInputEdit}>Confirm Edit</button>
                   <button onClick={this.handleCancel}>Cancel Edit</button>
@@ -169,7 +169,7 @@ export default class JournalForm extends Component {
             <ul className="task-list">
               {this.state.tasks.map((task, index) => 
                 <li id={index} key={index}>
-                <p>
+                <p id={`task-${index}`}>
                 {task}
                 </p>
                 <div className="edit-delete">
