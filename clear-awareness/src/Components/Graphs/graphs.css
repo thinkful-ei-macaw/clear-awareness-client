@@ -1,0 +1,36 @@
+.main-graph {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.linegraph {
+  margin-top: 30px;
+  width: 75%;
+  height: 200px;
+  margin-right: 40px;
+  margin-bottom: 50px;
+}
+
+.centering {
+  display: flex;
+  justify-content: center;
+
+  margin-bottom: 10px;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+ul {
+  padding-left: 0;
+  margin-bottom: 30px;
+}
+
+.sleep {
+  width: 100vw;
+}

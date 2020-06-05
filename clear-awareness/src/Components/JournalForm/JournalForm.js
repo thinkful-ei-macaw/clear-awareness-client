@@ -1,48 +1,46 @@
 import React, { Component } from "react";
-import PropTypes from 'prop-types'
-import './JournalForm.css';
-import TokenService from '../../Services/token-service';
-import Config from '../../config';
+import PropTypes from "prop-types";
+import "./JournalForm.css";
+import TokenService from "../../Services/token-service";
+import Config from "../../config";
 import { format } from "date-fns";
-
-
 
 export default class JournalForm extends Component {
   static propTypes = {
     redirectToDashboard: PropTypes.func.isRequired,
-    date: PropTypes.instanceOf(Date).isRequired
-  }
+    date: PropTypes.instanceOf(Date).isRequired,
+  };
 
   state = {
     tasks: [],
     edit: false,
-    number: null
-  }
-  
+    number: null,
+  };
+
   //will be using this function for submit handler, POST
-  createJournal = e => {
+  createJournal = (e) => {
     e.preventDefault();
     fetch(`${Config.API_ENDPOINT}/api/journal/`, {
-      method:'POST',
+      method: "POST",
       headers: {
-        'Authorization': `Bearer ${TokenService.getAuthToken()}`,
-        'Content-Type': 'application/json'
+        Authorization: `Bearer ${TokenService.getAuthToken()}`,
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         entry: e.target.textarea.value,
         mindful: e.target.mindfulAct.value,
         tasks: this.state.tasks,
         sleep_hours: e.target.sleep.value,
-        date_created: format(this.props.date, 'yyyy-MM-dd'),
+        date_created: format(this.props.date, "yyyy-MM-dd"),
         emotions: e.target.mood.value,
-      })
-    }).then((res) => 
-      !res.ok ? res.json().then((err) => Promise.reject(err)) : res.json() 
+      }),
+    }).then((res) =>
+      !res.ok ? res.json().then((err) => Promise.reject(err)) : res.json()
     );
     this.props.redirectToDashboard();
-  }
+  };
 
-  addTask = e => {
+  addTask = (e) => {
     e.preventDefault();
     let task = document.getElementById("task-input").value;
     let tasks = this.state.tasks;
@@ -50,51 +48,50 @@ export default class JournalForm extends Component {
     if (task.length !== 0) {
       document.getElementById("task-input").value = "";
       tasks.push(task);
-      this.setState({tasks: tasks});
+      this.setState({ tasks: tasks });
     }
+  };
 
-  }
-
-  handleEditTask = e => {
+  handleEditTask = (e) => {
     e.preventDefault();
 
     let task = e.target.parentElement.parentElement.id;
 
-    this.setState({edit: true, number: task});
+    this.setState({ edit: true, number: task });
     //access value
     //edit value
-  }
+  };
 
-  handleInputEdit = e => {
+  handleInputEdit = (e) => {
     e.preventDefault();
     let task = this.state.number;
     let tasks = this.state.tasks;
-
+    console.log(this.state.tasks);
     if (document.getElementById("edit-input").value.length !== 0) {
       tasks[task] = document.getElementById("edit-input").value;
-      this.setState({edit: false, number: null, tasks: tasks});
+      this.setState({ edit: false, number: null, tasks: tasks });
     }
-  }
+  };
 
-  handleDeleteTask = e => {
+  handleDeleteTask = (e) => {
     e.preventDefault();
 
     //delete value from array
     let tasks = this.state.tasks;
     let task = e.target.parentElement.parentElement.id;
-    
+
     tasks.splice(task, 1);
+
     this.setState({tasks: tasks, edit: false, number: false});
   }
 
-  handleCancel = e => {
+  handleCancel = (e) => {
     e.preventDefault();
-    this.setState({edit: false, number: null});
-  }
-  
-  render() {
+    this.setState({ edit: false, number: null });
+  };
 
-    console.log('this is the date', this.props.date)
+  render() {
+    console.log("this is the date", this.props.date);
     //happy, ok, fine, terrible
     return (
     <div className="form-container">
