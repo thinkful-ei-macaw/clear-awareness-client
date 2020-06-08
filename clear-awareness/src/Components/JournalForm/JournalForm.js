@@ -155,7 +155,7 @@ export default class JournalForm extends Component {
               placeholder="Enter Tasks Here"
               maxLength="250"
             />
-            <button className="addTask" id="add-task-button" onClick={this.addTask} >Add Task</button>
+            <button type="button" className="addTask" id="add-task-button" onClick={this.addTask} >Add Task</button>
           </div>
 
           <div className="display-task">
@@ -164,8 +164,8 @@ export default class JournalForm extends Component {
               <div className="edit-input">
                 <input type="text" id="edit-text-input" name="edit-text-input" placeholder={`Task Title: ${document.getElementById(`task-${this.state.number}`).textContent}`} required />
                 <div className="input-cancel">
-                  <button type="submit" name="confirm-button" id="confirm-button" onClick={this.handleInputEdit}>Confirm Edit</button>
-                  <button type="submit" name="cancel-button" id="cancel-button" onClick={this.handleCancel}>Cancel Edit</button>
+                  <button type="button" name="confirm-button" id="confirm-button" onClick={this.handleInputEdit}>Confirm Edit</button>
+                  <button type="button" name="cancel-button" id="cancel-button" onClick={this.handleCancel}>Cancel Edit</button>
                 </div>
               </div> 
               : 
@@ -179,8 +179,8 @@ export default class JournalForm extends Component {
                 {task}
                 </p>
                 <div className="edit-delete">
-                  <button name="edit-button" id="edit-button" onClick={this.handleEditTask}>Edit</button>
-                  <button name="edit-button" id="delete-button" onClick={this.handleDeleteTask}>Delete</button>
+                  <button type="button" name="edit-button" id="edit-button" onClick={this.handleEditTask}>Edit</button>
+                  <button type="button" name="edit-button" id="delete-button" onClick={this.handleDeleteTask}>Delete</button>
                 </div>
                 </li>
               )}
@@ -201,7 +201,7 @@ export default class JournalForm extends Component {
             >
               Go Back
             </button>
-            <button className="button" id="submit-button">Submit</button>
+            <button type="submit" className="button" id="submit-button">Submit</button>
           </div>
       </form>
     </div>
