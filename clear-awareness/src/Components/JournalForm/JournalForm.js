@@ -67,9 +67,11 @@ export default class JournalForm extends Component {
     let task = this.state.number;
     let tasks = this.state.tasks;
     console.log(this.state.tasks);
-    if (document.getElementById("edit-input").value.length !== 0) {
-      tasks[task] = document.getElementById("edit-input").value;
+    if (document.getElementById("edit-text-input").value.length !== 0) {
+      tasks[task] = document.getElementById("edit-text-input").value;
       this.setState({ edit: false, number: null, tasks: tasks });
+    } else {
+      this.setState({edit: false, number: false});
     }
   };
 
@@ -139,7 +141,7 @@ export default class JournalForm extends Component {
               id="mindfulAct"
               name="mindfulAct"
               placeholder="Mindful Act?"
-              maxlength="250"
+              maxLength="250"
               required
             />
           </div>
@@ -151,19 +153,19 @@ export default class JournalForm extends Component {
               id="task-input"
               name="tasks"
               placeholder="Enter Tasks Here"
-              maxlength="250"
+              maxLength="250"
             />
-            <button className="addTask" id="add-task-button" onClick={this.addTask} >Add Task</button>
+            <button type="button" className="addTask" id="add-task-button" onClick={this.addTask} >Add Task</button>
           </div>
 
           <div className="display-task">
             {(this.state.edit) 
               ? 
               <div className="edit-input">
-                <input type="text" id="edit-text-input" name="edit-text-input" placeholder={`Task Title: ${document.getElementById(`task-${this.state.number}`).textContent}`} />
+                <input type="text" id="edit-text-input" name="edit-text-input" placeholder={`Task Title: ${document.getElementById(`task-${this.state.number}`).textContent}`} required />
                 <div className="input-cancel">
-                  <button name="confirm-button" id="confirm-button" onClick={this.handleInputEdit}>Confirm Edit</button>
-                  <button name="cancel-button" id="cancel-button" onClick={this.handleCancel}>Cancel Edit</button>
+                  <button type="button" name="confirm-button" id="confirm-button" onClick={this.handleInputEdit}>Confirm Edit</button>
+                  <button type="button" name="cancel-button" id="cancel-button" onClick={this.handleCancel}>Cancel Edit</button>
                 </div>
               </div> 
               : 
@@ -177,8 +179,8 @@ export default class JournalForm extends Component {
                 {task}
                 </p>
                 <div className="edit-delete">
-                  <button name="edit-button" id="edit-button" onClick={this.handleEditTask}>Edit</button>
-                  <button name="edit-button" id="delete-button" onClick={this.handleDeleteTask}>Delete</button>
+                  <button type="button" name="edit-button" id="edit-button" onClick={this.handleEditTask}>Edit</button>
+                  <button type="button" name="edit-button" id="delete-button" onClick={this.handleDeleteTask}>Delete</button>
                 </div>
                 </li>
               )}
@@ -199,7 +201,7 @@ export default class JournalForm extends Component {
             >
               Go Back
             </button>
-            <button className="button" id="submit-button">Submit</button>
+            <button type="submit" className="button" id="submit-button">Submit</button>
           </div>
       </form>
     </div>
