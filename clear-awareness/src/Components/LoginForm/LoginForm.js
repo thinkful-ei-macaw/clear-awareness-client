@@ -6,7 +6,7 @@ import "./LoginForm.css"
 
 class LoginForm extends Component {
   static defaultProps = {
-    onLoginSuccess: () => {console.log('Called Default On login')},
+    onLoginSuccess: () => {},
     
   };
 

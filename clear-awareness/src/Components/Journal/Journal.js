@@ -47,11 +47,11 @@ export default class Journal extends React.Component {
     ])
       .then(([res]) => {
         if (!res.ok) return res.json().then((e) => Promise.reject(e));
-        console.log("this is the res", res);
+       
         return Promise.all([res.json()]);
       })
       .then((data) => {
-        console.log("this is the data", data);
+       
         this.setState({
           id: data[0].id,
           date: data[0].date_created,
@@ -78,7 +78,7 @@ export default class Journal extends React.Component {
         if (!res.ok) return res.json().then((e) => Promise.reject(e));
       })
       .then(() => {
-        console.log("deleted success");
+       
         this.props.redirectToDashboard();
       })
       .catch((res) => this.setState({ error: res.error }));
@@ -133,7 +133,7 @@ export default class Journal extends React.Component {
     this.setState({ emotions: value });
   }
   displayEmotions() {
-    console.log(this.state.emotions, typeof this.state.emotions);
+   
     if (this.state.emotions === "1") {
       return <i className="fas fa-grin"></i>;
     } else if (this.state.emotions === "2") {
@@ -144,8 +144,10 @@ export default class Journal extends React.Component {
       return <i className="fas fa-sad-tear"></i>;
     }
   }
+
+ 
   render() {
-    console.log(this.state.emotions);
+    
     return (
       <div className="journal-wrapper">
         <div className="journal-container">

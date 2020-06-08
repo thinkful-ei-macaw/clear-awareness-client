@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import AuthApiService from '../../Services/auth-api-service';
+import AuthApiService from "../../Services/auth-api-service";
 import TokenService from "../../Services/token-service";
 import IdleService from "../../Services/idle-service";
 
@@ -12,7 +12,7 @@ const UserContext = React.createContext({
   setUser: () => {},
   processLogin: () => {},
   processLogout: () => {},
-  setDate: ()=>{}
+  setDate: () => {},
 });
 
 export default UserContext;
@@ -62,21 +62,11 @@ export class UserProvider extends Component {
     this.setState({ user });
   };
 
-
- 
-  setDate = (date) => { 
-    console.log(date)
+  setDate = (date) => {
     this.setState({ date });
-}
- 
-
-
- 
-
- 
+  };
 
   processLogin = (authToken) => {
-    console.log(authToken)
     TokenService.saveAuthToken(authToken);
     const jwtPayload = TokenService.parseAuthToken();
     this.setUser({
@@ -127,7 +117,7 @@ export class UserProvider extends Component {
       setUser: this.setUser,
       processLogin: this.processLogin,
       processLogout: this.processLogout,
-      setDate: this.setDate
+      setDate: this.setDate,
     };
     return (
       <UserContext.Provider value={value}>

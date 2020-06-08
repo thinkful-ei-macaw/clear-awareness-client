@@ -66,7 +66,7 @@ export default class JournalForm extends Component {
     e.preventDefault();
     let task = this.state.number;
     let tasks = this.state.tasks;
-    console.log(this.state.tasks);
+    
     if (document.getElementById("edit-text-input").value.length !== 0) {
       tasks[task] = document.getElementById("edit-text-input").value;
       this.setState({ edit: false, number: null, tasks: tasks });
@@ -93,8 +93,7 @@ export default class JournalForm extends Component {
   };
 
   render() {
-    console.log("this is the date", this.props.date);
-    //happy, ok, fine, terrible
+
     return (
     <div className="form-container">
       <form onSubmit={this.createJournal} className="journal-form">

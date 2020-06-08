@@ -11,7 +11,7 @@ class LoginRoute extends Component {
   };
 
   handleLoginSuccess = () => {
-    console.log("this is a success")
+   
     const { history } = this.props;
     const destination = '/dashboard';
     history.push(destination);
