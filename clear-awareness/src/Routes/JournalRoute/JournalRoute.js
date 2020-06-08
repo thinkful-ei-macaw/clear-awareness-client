@@ -4,7 +4,6 @@ import JournalForm from "../../Components/JournalForm/JournalForm";
 import { parse } from "date-fns";
 import isValid from "date-fns/isValid";
 import Config from '../../config';
-import { format } from "date-fns";
 import TokenService from '../../Services/token-service';
 export default class JournalRoute extends React.Component {
   static defaultProps = {
