@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "../Header/Header";
 import RegistrationRoute from "../../Routes/RegistrationRoute/RegistrationRoute";
 import LoginRoute from "../../Routes/LoginRoute/LoginRoute";
@@ -8,6 +8,7 @@ import PrivateRoute from "../../Routes/PrivateRoute/PrivateOnlyRoute";
 import DashboardPage from "../../Routes/DashboardPage/DashboardPage";
 import LandingPage from "../../Routes/LandingPage/LandingPage";
 import JournalRoute from "../../Routes/JournalRoute/JournalRoute";
+import NotFoundRoute from '../../Routes/NotFoundRoute/NotFoundRoute';
 export default class App extends React.Component {
   render() {
     return (
@@ -28,6 +29,8 @@ export default class App extends React.Component {
               path={"/journal/:date"}
               component={JournalRoute}
             />
+
+            <Route component={NotFoundRoute} />
           </Switch>
         </Router>
       </section>
