@@ -155,6 +155,7 @@ export default class Journal extends React.Component {
             <p>
               <span className="text-style">Today's date</span> {this.state.date}
             </p>
+
             <p className="text-style">How I felt</p>
 
             {this.state.editFields ? (
@@ -169,7 +170,7 @@ export default class Journal extends React.Component {
                   }
                 ></i>
                 <i
-                  onClick={() => this.updateEmotions("2")} 
+                  onClick={() => this.updateEmotions("2")}
                   className={
                     "fas fa-smile face-style " +
                     (Number(this.state.emotions) === 2
@@ -224,6 +225,7 @@ export default class Journal extends React.Component {
                 name="sleep-hrs"
                 min="0"
                 max="24"
+                required
               />
             ) : (
               <p>{this.state.sleep_hours} hours</p>
@@ -267,17 +269,28 @@ export default class Journal extends React.Component {
             )}
           </div>
           <div className="btn-nav">
-            {this.state.editFields ? (
+            {this.state.editFields  ? (
+              this.state.sleep_hours>=0 && this.state.sleep_hours<=24
+              ?
               <button
                 className="journal-btn"
                 onClick={this.updateJournal.bind(this)}
               >
                 Save
+              </button> : <button
+                className="journal-btn"
+                type="submit"
+                disabled
+                onClick={(e) => this.handleUpdateJournal(e)}
+              >
+                Edit journal entry
               </button>
             ) : (
+              
               <button
                 className="journal-btn"
                 type="submit"
+                
                 onClick={(e) => this.handleUpdateJournal(e)}
               >
                 Edit journal entry
