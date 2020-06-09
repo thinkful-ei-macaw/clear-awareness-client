@@ -45,7 +45,7 @@ export default class Graphs extends React.Component {
           return { name: newDate, hours: x.sleep_hours };
         });
         const emotions = data.map((x) => x.emotions);
-        
+
         this.setState({ sleep: sleep, emotions: emotions });
       })
       .catch((error) => console.error(error));
@@ -54,13 +54,13 @@ export default class Graphs extends React.Component {
   findEmotionData() {
     const base = this.state.emotions.length;
     const happy = this.state.emotions.filter((x) => x === "1");
-    
+
     const okay = this.state.emotions.filter((x) => x === "2");
-   
+
     const notGreat = this.state.emotions.filter((x) => x === "3");
-    
+
     const sad = this.state.emotions.filter((x) => x === "4");
-    
+
     const data = [
       {
         subject: "Happiness",
@@ -87,7 +87,6 @@ export default class Graphs extends React.Component {
   }
 
   render() {
-    
     return (
       <div className="main-graph">
         <h3 className="sleep">Sleep patterns (Past week)</h3>
@@ -95,14 +94,10 @@ export default class Graphs extends React.Component {
           className="linegraph"
           style={{ width: "calc(90vw - 20px)", height: 200 }}
         >
-          
           <ResponsiveContainer>
             <LineChart className="Graph" data={this.state.sleep}>
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis
-                fontSize="15px"
-                dataKey="name"
-              >
+              <XAxis fontSize="15px" dataKey="name">
                 <Label value="Date" offset={-4} position="insideBottom" />
               </XAxis>
               <YAxis
