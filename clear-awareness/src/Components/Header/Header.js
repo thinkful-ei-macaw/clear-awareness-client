@@ -15,8 +15,8 @@ class Header extends Component {
   renderLogin() {
     return (
       <nav>
-        <Link to="/login">Login</Link> ||
-        <Link to="/register">Register</Link>
+        <Link className="victory" to="/login">Login</Link> ||
+        <Link className="victory"to="/register">Register</Link>
       </nav>
     );
   }
@@ -24,7 +24,7 @@ class Header extends Component {
   renderLogout() {
     return (
       <nav>
-          <Link onClick={this.handleLogoutClick} to="/login">
+          <Link className="victory" onClick={this.handleLogoutClick} to="/login">
             Logout
           </Link>
         </nav>
@@ -34,7 +34,7 @@ class Header extends Component {
   render() {
     return (
       <section className="header">
-          <h1>Clear Mind</h1>
+          <h1 className='title'>Clear Mind</h1>
           <p className="express-yourself">Express yourself & get it all out.</p>
           {TokenService.hasAuthToken() ? this.renderLogout() : this.renderLogin()}
       </section>

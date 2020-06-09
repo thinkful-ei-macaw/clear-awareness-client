@@ -31,14 +31,14 @@ export default class Dashboard extends Component {
         !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
       )
       .then((data) => {
-        console.log(data.quotations);
+      
         this.setState({ quotes: data.quotations });
       })
       .catch((error) => console.error(error));
   }
   onChange = (date) => {
     this.setState({ date });
-    console.log(this.state.date);
+    
   };
 
   onClickDay = (date) => {
@@ -63,8 +63,8 @@ export default class Dashboard extends Component {
       <div className="dash">
         <div className="centering">
           <div>
-            <h1>Dashboard: Mindfulness Center</h1>
-            <p>Mindful Quote</p>
+            <h2 className="deco">Mindfulness Center</h2>
+            <h3>Mindful Quote</h3>
           </div>
           <ul>
             {this.state.quotes.length === 0 ? (
