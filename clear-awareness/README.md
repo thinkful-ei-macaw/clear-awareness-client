@@ -1,7 +1,5 @@
 # Clear-mind Client
 
-# Clear-mind Client
-
 ## Introduction
 
 - Welcome to Clear-Mind.
