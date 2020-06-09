@@ -10,6 +10,7 @@ import {
   Radar,
   LineChart,
   Line,
+  Label,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -41,9 +42,10 @@ export default class Graphs extends React.Component {
       .then((data) => {
         const sleep = data.map((x) => {
           let newDate = x.date_created.slice(5);
-          return { name: newDate, value: x.sleep_hours };
+          return { name: newDate, hours: x.sleep_hours };
         });
         const emotions = data.map((x) => x.emotions);
+        console.log(sleep);
         this.setState({ sleep: sleep, emotions: emotions });
       })
       .catch((error) => console.error(error));
@@ -100,18 +102,22 @@ export default class Graphs extends React.Component {
                 fontSize="15px"
                 dataKey="name"
                 // padding={{ left: 30, right: 30 }}
-              />
+              >
+                <Label value="Date" offset={-4} position="insideBottom" />
+              </XAxis>
               <YAxis
                 name="Hours"
-                dataKey="value"
+                dataKey="hours"
                 fontSize="20px"
                 domain={[0, 24]}
-              />
+              >
+                <Label value="Hours" offset={-20} position="insideMiddle" />
+              </YAxis>
               <Tooltip />
 
               <Line
                 type="monotone"
-                dataKey="value"
+                dataKey="hours"
                 stroke="#8884d8"
                 activeDot={{ r: 8 }}
               />
@@ -140,7 +146,6 @@ export default class Graphs extends React.Component {
           />
           <Legend />
         </RadarChart>
-        {/* insert pie chart here */}
       </div>
     );
   }
