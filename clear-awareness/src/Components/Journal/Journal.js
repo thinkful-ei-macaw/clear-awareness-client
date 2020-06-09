@@ -6,6 +6,7 @@ import UserContext from "../../Components/Context/UserContext";
 import PropTypes from "prop-types";
 import { format } from "date-fns";
 
+
 export default class Journal extends React.Component {
   static contextType = UserContext;
 
@@ -126,8 +127,10 @@ export default class Journal extends React.Component {
   updateEntry(value) {
     this.setState({ entry: value });
   }
-  updateTasks(value) {
-    this.setState({ tasks: value });
+  updateTasks(index, value) {
+    this.setState({
+      tasks: this.state.tasks.map((task, i) => i===index?value: task)
+    })
   }
   updateEmotions(value) {
     this.setState({ emotions: value });
@@ -135,17 +138,26 @@ export default class Journal extends React.Component {
   displayEmotions() {
    
     if (this.state.emotions === "1") {
-      return <i className="fas fa-grin"></i>;
+      return <i className="fas fa-grin face-size"></i>;
     } else if (this.state.emotions === "2") {
-      return <i className="fas fa-smile"></i>;
+      return <i className="fas fa-smile face-size"></i>;
     } else if (this.state.emotions === "3") {
-      return <i className="fas fa-frown"></i>;
+      return <i className="fas fa-frown face-size"></i>;
     } else if (this.state.emotions === "4") {
-      return <i className="fas fa-sad-tear"></i>;
+      return <i className="fas fa-sad-tear face-size"></i>;
     }
   }
 
- 
+  deleteTask(index){
+    console.log('deleting index', index)
+    this.setState({
+      tasks: this.state.tasks.filter((_, i) => i !== index)
+    });
+  }
+  addTask(){
+    this.setState({tasks: this.state.tasks.concat([""])})
+  }
+
   render() {
     
     return (
@@ -207,7 +219,7 @@ export default class Journal extends React.Component {
             {this.state.editFields ? (
               <input
                 type="text"
-                maxlength="100"
+                maxLength="100"
                 value={this.state.mindful}
                 id="mindful"
                 name="mindful"
@@ -234,20 +246,24 @@ export default class Journal extends React.Component {
             )}
             <p className="text-style">Things I got done</p>
             {this.state.editFields ? (
-              <input
+              <div>
+              <ul>{this.state.tasks.map((x,index) => {
+                return <li key={index} className="nobullets"><input
                 type="text"
-                onChange={(e) => this.updateTasks(e.target.value.split(","))}
-                value={this.state.tasks}
-                id="tasks"
+                onChange={(e) => this.updateTasks(index, e.target.value)}
+                value={x}
                 name="tasks"
-                maxlength="200"
-              />
+                maxLength="200"
+              /> <span onClick={() => this.deleteTask(index)} className="garbage"><i className="fa fa-trash" aria-hidden="true"></i></span></li>
+              })}</ul> 
+              <p className="plus"><i onClick={this.addTask.bind(this)} className="far fa-plus-square"></i></p>
+              </div>
             ) : (
               <p>
-                {this.state.tasks.map((x, id) => {
+                {this.state.tasks.map((task, id) => {
                   return (
                     <li className="listing" key={id}>
-                      {x}
+                      {task}
                     </li>
                   );
                 })}
@@ -260,7 +276,7 @@ export default class Journal extends React.Component {
                 name="textarea-style"
                 row="5"
                 col="15"
-                maxlength="500"
+                maxLength="500"
                 value={this.state.entry}
                 onChange={(e) => this.updateEntry(e.target.value)}
               >
