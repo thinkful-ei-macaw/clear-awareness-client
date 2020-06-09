@@ -21,15 +21,13 @@
   width: 80%;
 }
 
-section {
-  /* width: fit-content; */
-  /* padding-right: 15px;
-  padding-left: 10px; */
-}
+
 .dash {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-#root {
+
+.deco{
+  font-size: 45px;
 }
