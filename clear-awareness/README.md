@@ -1,68 +1,239 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Clear-mind Client
 
-## Available Scripts
+# Clear-mind Client
 
-In the project directory, you can run:
+## Introduction
 
-### `npm start`
+- Welcome to Clear-Mind.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Explore your feelings and thoughts with daily journals and personal data tracking.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- This digital journaling application allows users to keep track of daily tasks, record inner thoughts, encourage mindful acts, and track sleep and emotional patterns.
 
-### `npm test`
+- Upon submitting a journal entry, the user's dashboard will update to display emotion and sleep data, allowing the user to see a visual representation of their progress over time.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- The user can use the calendar on the mindfulness center page to navigate to a specific day's journal and update entries to their liking.
 
-### `npm run build`
+## heroku link:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+https://obscure-castle-68689.herokuapp.com/
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## link to live app:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+https://clear-mind.now.sh/
 
-### `npm run eject`
+## link to server repo:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+https://github.com/thinkful-ei-macaw/clear-awareness-api
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## link to client repo:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+https://github.com/thinkful-ei-macaw/clear-awareness-client
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Team members: [Desmond Wareham](https://github.com/desmondwa), [Brannen Petit](https://github.com/bpetit940), [James Moua](), [Javori Smart](https://github.com/javi-err), [Vendy Prum](https://github.com/iampruven)
 
-## Learn More
+### Tech-Stack:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Client:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- ReactJS
+- HTML
+- JavaScript
+- CSS
+- Vercel
 
-### Code Splitting
+### Server:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+- ReactJs
+- NodeJs
+- Express
+- Knex
+- PostgreSQL
+- Heroku
 
-### Analyzing the Bundle Size
+### Screenshots
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+![LandingPage](/images/landingpage.png "Optional Title")
+![Login](/images/LoginPage.png "Optional Title")
+![Registration](/images/RegistrationPage.png "Optional Title")
+![Dashboard](/images/Dashboard.png "Optional Title")
+![journalForm](/images/journalform.png "Optional Title")
+![editJournal](/images/editentry.png "Optional Title")
+![journal](/images/journal.png "Optional Title")
+![graph](/images/graph.png "Optional Title")
 
-### Making a Progressive Web App
+## API Docs:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+- POST
 
-### Advanced Configuration
+  - REQUEST: `/api/auth/token`
+  - Allows users to login and get authorization token
+  - RESPONSE: 200 OK
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+  ```
+  {
+    authToken: returns authToken
+  }
+  ```
 
-### Deployment
+- PUT
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+  - REQUEST: `/api/auth/`
+  - Updates the user's auth token, this is a refreshing situation
+  - RESPONSE: 200 OK
 
-### `npm run build` fails to minify
+  ```
+  {
+    authToken: returns authToken
+  }
+  ```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- POST
+
+  - REQUEST: `/api/users/`
+  - Allows users to sign up on the app
+  - RESPONSE: 201 OK
+
+  ```
+  {
+    "id": 4,
+    "name": "bran",
+    "username": "testing2"
+  }
+  ```
+
+- GET
+
+  - REQUEST: `/api/journal/`
+  - Retrieves the user's journals from the last 7 days
+  - RESPONSE: 200
+
+  ```
+  [
+    {
+      "id": 1,
+      "entry": "Sample entry",
+      "tasks": [
+        "task1", "task2, "task3"
+      ],
+      "mindful": "sample mindful act",
+      "sleep_hours": 8,
+      "emotions": 1,
+      "date_created": "2020-06-04},
+    {
+      "id": 1,
+      "entry": "Sample entry",
+      "tasks": [
+        "task1", "task2, "task3"
+      ],
+      "mindful": "sample mindful act 2",
+      "sleep_hours": 8,
+      "emotions": 1,
+      "date_created": "2020-06-05
+    }
+  ]
+  ```
+
+- GET
+
+  - REQUEST: `/api/journal/:journalDate`
+  - Retrieves the specific day that the user is requesting to view
+  - RESPONSE: 200
+    ```
+    {
+      "id": 1,
+      "entry": "Sample entry",
+      "tasks": [
+        "task1", "task2, "task3"
+      ],
+      "mindful": "sample mindful act",
+      "sleep_hours": 8,
+      "emotions": 1,
+      "date_created": "2020-06-04
+    }
+    ```
+
+- POST
+
+  - REQUEST: `/api/journal`
+  - Inserts users journal at the current date to the database
+  - RESPONSE: 200
+    ```
+    {
+      [ 1 ]
+    }
+    ```
+
+- PATCH
+
+  - REQUEST: `/api/journal/:journalDate`
+  - Updates journal for the specified day by the user
+  - RESPONSE: 204
+
+- DELETE
+
+  - REQUEST: `/api/journal/:journalDate`
+  - Deletes a journal entry based on the specified date by the user
+  - Response: 204
+
+- GET
+  - REQUEST: `/api/quotes`
+  - Returns list of all quotes within the backend store
+  - RESPONSE: 200
+  ```
+  [
+    {
+      id: uuid(),
+      quotation: "Anxiety arises from not being able to see the whole picture. If you feel anxious, but are not sure why, try putting your things in order.",
+      author: "Marie Kondo",
+    },
+    {
+      id: uuid(),
+      quotation: "It takes as much energy to wish as it does to plan.",
+      author: "Eleanor Roosevelt",
+    },
+    {
+      id: uuid(),
+      quotation: "Entrepreneurs are simply those who understand that there is little difference between obstacle and opportunity and are able to turn both to their advantage.",
+      author: "Niccolo Machiavelli",
+    }
+  ]
+  ```
+
+### Summary
+
+- This application allows users to view their current emotion and sleep patterns
+- This application allows users to view the current calendar month and submit journals for specific days
+- This application allows users to edit or delete a journal for a specific day
+- This application allows user to view mindfulness quotes above their calendar
+
+### Local Dev Setup
+
+If using user `dunder-mifflin`;
+
+```
+
+mv .env.test .env
+createdb -U dunder-mifflin clear-mind
+createdb -U dunder-mifflin clear-mind-test
+
+```
+
+If your `dunder-mifflin` user has a password, be sure to set it in `.env` for all appropriate fields. Or if using a different user, update appropriately.
+
+```
+
+npm install
+npm run migrate
+
+```
+
+Refer to `.env.test`
+
+### Client Installation Setup
+
+- npm i
+- npm i react-router-dom
+- npm i date-fns
+- npm i recharts
+- npm i calendar
