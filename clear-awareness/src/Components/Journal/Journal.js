@@ -6,7 +6,6 @@ import UserContext from "../../Components/Context/UserContext";
 import PropTypes from "prop-types";
 import { format } from "date-fns";
 
-
 export default class Journal extends React.Component {
   static contextType = UserContext;
 
@@ -48,11 +47,10 @@ export default class Journal extends React.Component {
     ])
       .then(([res]) => {
         if (!res.ok) return res.json().then((e) => Promise.reject(e));
-       
+
         return Promise.all([res.json()]);
       })
       .then((data) => {
-       
         this.setState({
           id: data[0].id,
           date: data[0].date_created,
@@ -79,7 +77,6 @@ export default class Journal extends React.Component {
         if (!res.ok) return res.json().then((e) => Promise.reject(e));
       })
       .then(() => {
-       
         this.props.redirectToDashboard();
       })
       .catch((res) => this.setState({ error: res.error }));
@@ -129,14 +126,13 @@ export default class Journal extends React.Component {
   }
   updateTasks(index, value) {
     this.setState({
-      tasks: this.state.tasks.map((task, i) => i===index?value: task)
-    })
+      tasks: this.state.tasks.map((task, i) => (i === index ? value : task)),
+    });
   }
   updateEmotions(value) {
     this.setState({ emotions: value });
   }
   displayEmotions() {
-   
     if (this.state.emotions === "1") {
       return <i className="fas fa-grin face-size"></i>;
     } else if (this.state.emotions === "2") {
@@ -148,18 +144,17 @@ export default class Journal extends React.Component {
     }
   }
 
-  deleteTask(index){
-    console.log('deleting index', index)
+  deleteTask(index) {
+    console.log("deleting index", index);
     this.setState({
-      tasks: this.state.tasks.filter((_, i) => i !== index)
+      tasks: this.state.tasks.filter((_, i) => i !== index),
     });
   }
-  addTask(){
-    this.setState({tasks: this.state.tasks.concat([""])})
+  addTask() {
+    this.setState({ tasks: this.state.tasks.concat([""]) });
   }
 
   render() {
-    
     return (
       <div className="journal-wrapper">
         <div className="journal-container">
@@ -247,16 +242,36 @@ export default class Journal extends React.Component {
             <p className="text-style">Things I got done</p>
             {this.state.editFields ? (
               <div>
-              <ul>{this.state.tasks.map((x,index) => {
-                return <li key={index} className="nobullets"><input
-                type="text"
-                onChange={(e) => this.updateTasks(index, e.target.value)}
-                value={x}
-                name="tasks"
-                maxLength="200"
-              /> <span onClick={() => this.deleteTask(index)} className="garbage"><i className="fa fa-trash" aria-hidden="true"></i></span></li>
-              })}</ul> 
-              <p className="plus"><i onClick={this.addTask.bind(this)} className="far fa-plus-square"></i></p>
+                <ul>
+                  {this.state.tasks.map((x, index) => {
+                    return (
+                      <li key={index} className="nobullets">
+                        <input
+                          type="text"
+                          className="task-space"
+                          onChange={(e) =>
+                            this.updateTasks(index, e.target.value)
+                          }
+                          value={x}
+                          name="tasks"
+                          maxLength="200"
+                        />{" "}
+                        <span
+                          onClick={() => this.deleteTask(index)}
+                          className="garbage"
+                        >
+                          <i className="fa fa-trash" aria-hidden="true"></i>
+                        </span>
+                      </li>
+                    );
+                  })}
+                </ul>
+                <p className="plus">
+                  <i
+                    onClick={this.addTask.bind(this)}
+                    className="far fa-plus-square"
+                  ></i>
+                </p>
               </div>
             ) : (
               <p>
@@ -287,28 +302,28 @@ export default class Journal extends React.Component {
             )}
           </div>
           <div className="btn-nav">
-            {this.state.editFields  ? (
-              this.state.sleep_hours>=0 && this.state.sleep_hours<=24
-              ?
-              <button
-                className="journal-btn"
-                onClick={this.updateJournal.bind(this)}
-              >
-                Save
-              </button> : <button
-                className="journal-btn"
-                type="submit"
-                disabled
-                onClick={(e) => this.handleUpdateJournal(e)}
-              >
-                Edit journal entry
-              </button>
+            {this.state.editFields ? (
+              this.state.sleep_hours >= 0 && this.state.sleep_hours <= 24 ? (
+                <button
+                  className="journal-btn"
+                  onClick={this.updateJournal.bind(this)}
+                >
+                  Save
+                </button>
+              ) : (
+                <button
+                  className="journal-btn"
+                  type="submit"
+                  disabled
+                  onClick={(e) => this.handleUpdateJournal(e)}
+                >
+                  Edit journal entry
+                </button>
+              )
             ) : (
-              
               <button
                 className="journal-btn"
                 type="submit"
-                
                 onClick={(e) => this.handleUpdateJournal(e)}
               >
                 Edit journal entry

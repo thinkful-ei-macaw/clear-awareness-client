@@ -98,7 +98,7 @@ export default class Graphs extends React.Component {
             <LineChart className="Graph" data={this.state.sleep}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis fontSize="15px" dataKey="name">
-                <Label value="Date" offset={-4} position="insideBottom" />
+                <Label value="Date" offset={-5} position="insideBottomLeft" />
               </XAxis>
               <YAxis
                 name="Hours"
@@ -106,7 +106,12 @@ export default class Graphs extends React.Component {
                 fontSize="20px"
                 domain={[0, 24]}
               >
-                <Label value="Hours" offset={5} position="insideBottomLeft" />
+                <Label
+                  value="Hours"
+                  offset={30}
+                  angle="-90"
+                  position="insideBottomLeft"
+                />
               </YAxis>
               <Tooltip />
 

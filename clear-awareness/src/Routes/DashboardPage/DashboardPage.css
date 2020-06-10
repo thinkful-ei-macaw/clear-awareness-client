@@ -1,6 +1,13 @@
 .calender {
   display: flex;
   justify-content: center;
+  width: 100vw;
+  max-width: 100vw;
+}
+
+.react-calendar .calendars {
+  width: 100vw;
+  max-width: 100vw;
 }
 
 .centering {
@@ -21,13 +28,50 @@
   width: 80%;
 }
 
-
 .dash {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.deco{
+.deco {
   font-size: 45px;
+}
+
+.quote {
+  padding: 5px;
+  font-size: 17px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.instructions {
+  margin-bottom: 30px;
+}
+
+@media (min-width: 720px) {
+  .centering {
+    font-size: 40px;
+  }
+
+  .calender {
+    width: 80vw;
+    max-width: 80vw;
+  }
+
+  .react-calendar .calendars {
+    width: 80vw;
+    max-width: 80vw;
+  }
+
+  .quote {
+    font-size: 24px;
+  }
+
+  .instructions {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
 }

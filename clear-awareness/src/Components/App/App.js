@@ -9,12 +9,9 @@ import DashboardPage from "../../Routes/DashboardPage/DashboardPage";
 import LandingPage from "../../Routes/LandingPage/LandingPage";
 import JournalRoute from "../../Routes/JournalRoute/JournalRoute";
 import NotFoundRoute from "../../Routes/NotFoundRoute/NotFoundRoute";
-import './App.css';
+import "./App.css";
 export default class App extends React.Component {
-
-
   render() {
-    
     return (
       <main>
         <section className="mainapp">

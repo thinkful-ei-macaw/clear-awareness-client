@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
-import './Header.css'
+import React, { Component } from "react";
+import "./Header.css";
 import { Link } from "react-router-dom";
-import UserContext from '../Context/UserContext';
-import TokenService from '../../Services/token-service';
+import UserContext from "../Context/UserContext";
+import TokenService from "../../Services/token-service";
 
 class Header extends Component {
-
   static contextType = UserContext;
 
   handleLogoutClick = () => {
@@ -15,8 +14,13 @@ class Header extends Component {
   renderLogin() {
     return (
       <nav>
-        <Link className="victory" to="/login">Login</Link> ||
-        <Link className="victory"to="/register">Register</Link>
+        <Link className="victory" to="/login">
+          Login
+        </Link>{" "}
+        ||
+        <Link className="victory" to="/register">
+          Register
+        </Link>
       </nav>
     );
   }
@@ -24,22 +28,32 @@ class Header extends Component {
   renderLogout() {
     return (
       <nav>
-          <Link className="victory" onClick={this.handleLogoutClick} to="/login">
-            Logout
-          </Link>
-        </nav>
-    )
+        <Link className="victory" onClick={this.handleLogoutClick} to="/login">
+          Logout
+        </Link>
+      </nav>
+    );
   }
 
   render() {
     return (
       <section className="header">
-          <h1 className='title'>Clear Mind</h1>
-          <p className="express-yourself">Express yourself & get it all out.</p>
-          {TokenService.hasAuthToken() ? this.renderLogout() : this.renderLogin()}
+        <h1 className="title">
+          {TokenService.hasAuthToken() ? (
+            <Link className="heading" to="/dashboard">
+              Clear Mind
+            </Link>
+          ) : (
+            <Link className="heading" to="/">
+              Clear Mind
+            </Link>
+          )}
+        </h1>
+        <p className="express-yourself">Express yourself & get it all out.</p>
+        {TokenService.hasAuthToken() ? this.renderLogout() : this.renderLogin()}
       </section>
-    )
+    );
   }
 }
 
-export default Header
+export default Header;

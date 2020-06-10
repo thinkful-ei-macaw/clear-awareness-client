@@ -1,31 +1,34 @@
 .LoginForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .input-box {
-    margin-bottom: 30px;
-    
+  margin-bottom: 30px;
 }
 
-
-
 h2 {
-    text-align: center;
+  text-align: center;
 }
 
 .login-btn {
-    border: solid 2px rgba(0, 0, 0, 0.5);
-    border-radius:5px;
-    font-family: "Cormorant", serif;
-    font-weight: 600;
-    text-align: center;
-    padding: 0.5em 1.5em;
-    width: fit-content;
-    margin-bottom: 15px;
-  }
+  border: solid 2px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  font-family: "Cormorant", serif;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.5em 1.5em;
+  width: fit-content;
+  margin-bottom: 15px;
+}
 
-  .login-btn:hover{
-      background-color: teal;
+.login-btn:hover {
+  background-color: teal;
+}
+
+@media (min-width: 720px) {
+  .LoginForm {
+    font-size: 23px;
   }
+}

@@ -1,5 +1,5 @@
 .form-container {
-    text-align: center;
+  text-align: center;
   border: solid 4px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
   background-color: white;
@@ -13,170 +13,192 @@
 }
 
 .journal-form {
-    display: flex;
-    flex-direction: column;
-    margin-right: 15%;
-    margin-left: 15%;
+  display: flex;
+  flex-direction: column;
+  margin-right: 15%;
+  margin-left: 15%;
 }
 
 .mood {
-    margin-top: 15px;
-    outline: none;
-    border: none;
+  margin-top: 15px;
+  outline: none;
+  border: none;
 }
 
 .mood legend {
-    text-align: center;
+  text-align: center;
 }
 
 .mood label {
-    font-size: 2.5em;
-    vertical-align: middle;
+  font-size: 2.5em;
+  vertical-align: middle;
 }
 
-
 .mood input[type="radio"] {
-    position: 0;
-    opacity: 0;
-    width: 0;
-    height: 0;
-    vertical-align: middle;
+  position: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  vertical-align: middle;
 }
 
 .mood input[type="radio"] + i {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .mood input[type="radio"]:checked + i {
-    outline: 2px solid teal;
+  outline: 2px solid teal;
 }
 
 .journal-form button {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .emoji {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 
-.sleep-input, .mindful-input, .task-input, .textarea-input {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-} 
-
-.sleep-input label, .mindful-input label, .task-input label, .textarea-input label {
-    text-align: center;
-    margin-top: 15px;
-    margin-bottom: 5px;
+.sleep-input,
+.mindful-input,
+.task-input,
+.textarea-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.sleep-input input, .mindful-input input, .task-input input, .textarea-input input {
-    text-align: center;
-    height: 2rem;
-    width: 15rem;
-    font-size: 16px;
-    border: 1px solid rgba(0,0,0,0.5);
-    border-radius: 5px;
+.sleep-input label,
+.mindful-input label,
+.task-input label,
+.textarea-input label {
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 5px;
 }
 
-.sleep-input input[type="number"], .mindful-input input[type="text"], .task-input input[type="text"], .textarea-input input[type="text"], .edit-input input[type="text"] {
-    display: block;
-    width: inherit + 2rem;
-    margin: 0 auto;
+.sleep-input input,
+.mindful-input input,
+.task-input input,
+.textarea-input input {
+  text-align: center;
+  height: 2rem;
+  width: 15rem;
+  font-size: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
 }
 
-.task-input .addTask{
-    display: block;
-    margin: 10px auto 0 auto;
+.sleep-input input[type="number"],
+.mindful-input input[type="text"],
+.task-input input[type="text"],
+.textarea-input input[type="text"],
+.edit-input input[type="text"] {
+  display: block;
+  width: inherit + 2rem;
+  margin: 0 auto;
+}
+
+.task-input .addTask {
+  display: block;
+  margin: 10px auto 0 auto;
 }
 
 textarea {
-    resize: none;
-    text-align: center;
+  resize: none;
+  text-align: center;
 }
 
-.button-input, .input-cancel {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 15px;
+.button-input,
+.input-cancel {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
 }
 
 .task-list {
-    padding: 0;
-    margin: 0.5em -1.5em;
+  padding: 0;
+  margin: 0.5em -1.5em;
 }
 
 .task-list li {
-    text-decoration: none;
-    list-style-type: none;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
+  text-decoration: none;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
 }
 
 .task-list li p {
-    margin: 0;
-    line-break: strict;
-    overflow: wrap;
+  margin: 0;
+  line-break: strict;
+  overflow: wrap;
 }
 
 .edit-input {
-    margin-top: 1em;
+  margin-top: 1em;
 }
 
-.edit-input input[type="text"]{
-    text-align: center;
+.edit-input input[type="text"] {
+  text-align: center;
 }
 
 .input-cancel {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 
 .input-cancel button {
-    font-size: 16px;
-    font-family: "Cormorant", serif;
-    font-weight: 600;
-    border: solid 2px rgba(0, 0, 0, 0.5);
-    border-radius: 5px;
-    padding: 0.5em 0.5em;
+  font-size: 16px;
+  font-family: "Cormorant", serif;
+  font-weight: 600;
+  border: solid 2px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  padding: 0.5em 0.5em;
 }
 
 .button-input {
-    margin-top: 15px;
-    margin-bottom: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
-.button-input button, .task-input button {
-    font-size: 16px;
-    font-family: "Cormorant", serif;
-    font-weight: 600;
-    border: solid 2px rgba(0, 0, 0, 0.5);
-    border-radius: 5px;
-    padding: 0.5em 1.5em;
+.button-input button,
+.task-input button {
+  font-size: 16px;
+  font-family: "Cormorant", serif;
+  font-weight: 600;
+  border: solid 2px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  padding: 0.5em 1.5em;
 }
 
 .edit-delete {
-    display: flex;
-    flex-direction: row;
-    align-self: center;
+  display: flex;
+  flex-direction: row;
+  align-self: center;
 }
 
 .edit-delete button {
-    font-size: 16px;
-    font-family: "Cormorant", serif;
-    font-weight: 600;
-    margin-left: 5px;
-    border: solid 2px rgba(0, 0, 0, 0.5);
-    border-radius: 5px;
+  font-size: 16px;
+  font-family: "Cormorant", serif;
+  font-weight: 600;
+  margin-left: 5px;
+  border: solid 2px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
 }
 
-#add-task-button:hover, #confirm-button:hover, 
-#cancel-button:hover, #delete-button:hover,
-#edit-button:hover, #go-back-button:hover,
+#add-task-button:hover,
+#confirm-button:hover,
+#cancel-button:hover,
+#delete-button:hover,
+#edit-button:hover,
+#go-back-button:hover,
 #submit-button:hover {
-    background-color: teal;   
+  background-color: teal;
 }
 
+@media (min-width: 720px) {
+  .form-container {
+    font-size: 23px;
+  }
+}
