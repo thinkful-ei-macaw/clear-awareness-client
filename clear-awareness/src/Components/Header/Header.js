@@ -17,7 +17,7 @@ class Header extends Component {
         <Link className="victory" to="/login">
           Login
         </Link>{" "}
-        ||
+        ||{" "}
         <Link className="victory" to="/register">
           Register
         </Link>

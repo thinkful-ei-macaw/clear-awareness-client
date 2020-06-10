@@ -15,12 +15,13 @@ class RegistrationForm extends Component {
   handleSubmit = (ev) => {
     ev.preventDefault();
     const { name, username, password, passwurd } = ev.target;
+
     this.setState({
       password: password,
       passwurd: passwurd,
     });
-    if (this.state.passwurd !== this.state.password) {
-      this.setState({ error: "Passwords do not match" });
+    if (passwurd !== password) {
+      return this.setState({ error: "Passwords do not match" });
     }
 
     AuthApiService.postUser({
@@ -72,7 +73,11 @@ class RegistrationForm extends Component {
             type="password"
             required
           />
-          <label htmlFor="validate-password">Confirm your password</label>
+        </div>
+        <div className="input-box">
+          <label htmlFor="validate-password" className="validate">
+            Confirm your password
+          </label>
           <br />
           <input
             id="validate-password"
@@ -80,13 +85,14 @@ class RegistrationForm extends Component {
             type="password"
             required
           />
+          <p className="err">{this.state.error}</p>
         </div>
         <div className="center">
           <button className="registration-btn" type="submit">
             Sign up
           </button>{" "}
           <Link to="/login">
-            <button type="button" className="registration-btn" id="account">
+            <button type="button" className="have-acc" id="account">
               Already have an account?
             </button>
           </Link>

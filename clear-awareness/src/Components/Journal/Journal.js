@@ -61,7 +61,7 @@ export default class Journal extends React.Component {
           tasks: data[0].tasks,
         });
       })
-      .catch((error) => console.log({ error }));
+      .catch((error) => ({ error }));
   }
 
   handleDeleteJournal(e) {
@@ -145,7 +145,6 @@ export default class Journal extends React.Component {
   }
 
   deleteTask(index) {
-    console.log("deleting index", index);
     this.setState({
       tasks: this.state.tasks.filter((_, i) => i !== index),
     });

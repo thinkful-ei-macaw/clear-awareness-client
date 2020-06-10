@@ -109,7 +109,7 @@ export default class Graphs extends React.Component {
                 <Label
                   value="Hours"
                   offset={30}
-                  angle="-90"
+                  angle={-90}
                   position="insideBottomLeft"
                 />
               </YAxis>
