@@ -12,11 +12,34 @@
   flex-direction: column;
 }
 
+.nobullets{
+  list-style-type: none;
+}
+.garbage{
+  cursor: pointer;
+}
+.garbage:hover{
+  color:teal;
+}
+
+.plus{
+  cursor: pointer;
+}
+
+.plus:hover{
+  color:teal;
+}
+
 .face-style:hover{
   color:teal;
 }
 .face-style{
-  cursor:pointer
+  cursor:pointer;
+  font-size: 2.5em;
+}
+
+.face-size{
+  font-size:2.5em;
 }
 .face-style--visited{
   background-color:goldenrod;
