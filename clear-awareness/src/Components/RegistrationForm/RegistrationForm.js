@@ -16,11 +16,7 @@ class RegistrationForm extends Component {
     ev.preventDefault();
     const { name, username, password, passwurd } = ev.target;
 
-    this.setState({
-      password: password,
-      passwurd: passwurd,
-    });
-    if (passwurd !== password) {
+    if (passwurd.value !== password.value) {
       return this.setState({ error: "Passwords do not match" });
     }
 
