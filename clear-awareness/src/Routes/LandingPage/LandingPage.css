@@ -30,4 +30,8 @@ h1 {
   padding: 8px;
 }
 
-
+@media (min-width: 720px) {
+  .main-container {
+    font-size: 25px;
+  }
+}

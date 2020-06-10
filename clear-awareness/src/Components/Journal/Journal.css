@@ -11,56 +11,59 @@
   align-items: center;
   flex-direction: column;
 }
+.task-space {
+  margin: 0 4px 5px 20px;
+}
 
-.nobullets{
+.nobullets {
   list-style-type: none;
 }
-.garbage{
+.garbage {
   cursor: pointer;
 }
-.garbage:hover{
-  color:teal;
+.garbage:hover {
+  color: teal;
 }
 
-.plus{
+.plus {
   cursor: pointer;
 }
 
-.plus:hover{
-  color:teal;
+.plus:hover {
+  color: teal;
 }
 
-.face-style:hover{
-  color:teal;
+.face-style:hover {
+  color: teal;
 }
-.face-style{
-  cursor:pointer;
+.face-style {
+  cursor: pointer;
   font-size: 2.5em;
 }
 
-.face-size{
-  font-size:2.5em;
+.face-size {
+  font-size: 2.5em;
 }
-.face-style--visited{
-  background-color:goldenrod;
+.face-style--visited {
+  background-color: goldenrod;
 }
 
-#textarea-style{
+#textarea-style {
   margin-bottom: 10px;
-  border-radius:5px;
-  
+  border-radius: 5px;
 }
 
-.listing{
+.listing {
   list-style-type: none;
 }
 
-.text-style{
+.text-style {
   font-weight: bold;
+  margin-top: 23px;
 }
 .journal-btn {
   border: solid 2px rgba(0, 0, 0, 0.5);
-  border-radius:5px;
+  border-radius: 5px;
   font-family: "Cormorant", serif;
   text-align: center;
   margin-bottom: 10px;
@@ -68,11 +71,10 @@
 }
 
 .journal-btn:hover {
-  background-color:teal;
-
+  background-color: teal;
 }
-.journal-wrapper{
-  display:flex;
+.journal-wrapper {
+  display: flex;
   justify-content: center;
 }
 
@@ -80,15 +82,24 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-
 }
 
 textarea {
   resize: none;
-  text-align: center
+  text-align: center;
 }
 
 #textarea-style {
   width: 70vw;
   height: 200px;
+}
+
+@media (min-width: 720px) {
+  .journal-container {
+    font-size: 25px;
+  }
+
+  .journal-btn {
+    font-size: 20px;
+  }
 }

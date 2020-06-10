@@ -31,14 +31,12 @@ export default class Dashboard extends Component {
         !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
       )
       .then((data) => {
-      
         this.setState({ quotes: data.quotations });
       })
       .catch((error) => console.error(error));
   }
   onChange = (date) => {
     this.setState({ date });
-    
   };
 
   onClickDay = (date) => {
@@ -52,10 +50,6 @@ export default class Dashboard extends Component {
   };
 
   render() {
-    //put date in URL
-    //parse and figure out date
-    //send json in YYYY-MM-DD format
-
     const randomIndex = Math.floor(Math.random() * this.state.quotes.length);
     let newquote = this.state.quotes[randomIndex];
 
@@ -66,16 +60,19 @@ export default class Dashboard extends Component {
             <h2 className="deco">Mindfulness Center</h2>
             <h3>Mindful Quote</h3>
           </div>
-          <ul>
+          <ul className="no-ul-margin">
             {this.state.quotes.length === 0 ? (
               []
             ) : (
-              <p>
+              <p className="quote">
                 "{newquote.quotation}" <br />
                 --{newquote.author}
               </p>
             )}
           </ul>
+          <h3 className="instructions">
+            Click on a day within the calendar to begin.
+          </h3>
           <div className="calender">
             <Calendar
               className="calendars"

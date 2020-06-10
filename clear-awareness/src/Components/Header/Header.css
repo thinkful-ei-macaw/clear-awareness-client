@@ -1,7 +1,9 @@
 .header {
+  display: flex;
   text-align: center;
   font-family: "Cormorant", serif;
   align-content: center;
+  align-items: center;
   width: stretch;
 }
 
@@ -14,19 +16,30 @@ nav {
   font-family: "Cormorant", serif;
   position: absolute;
   top: 0;
-  left: 0;
+  font-size: 20px;
+  align-items: center;
 }
 .express-yourself {
   font-family: "Cedarville Cursive", cursive;
   font-size: 20px;
 }
 
-
-.victory{
+.victory {
   text-decoration: none;
-  color:maroon;
+  color: maroon;
+  font-weight: 700;
 }
-.victory:hover{
+.victory:hover {
+  color: teal;
+}
+
+.heading {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+
+.heading:hover {
   color: teal;
 }
 
