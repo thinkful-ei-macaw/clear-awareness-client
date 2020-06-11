@@ -64,10 +64,10 @@ export default class Dashboard extends Component {
             {this.state.quotes.length === 0 ? (
               []
             ) : (
-              <p className="quote">
+              <li className="quote">
                 "{newquote.quotation}" <br />
                 --{newquote.author}
-              </p>
+              </li>
             )}
           </ul>
           <h3 className="instructions">
