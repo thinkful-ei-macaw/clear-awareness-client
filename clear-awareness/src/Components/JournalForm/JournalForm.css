@@ -105,8 +105,10 @@
 }
 
 textarea {
+  border: 1px bold black;
   resize: none;
   text-align: center;
+  margin-top: 15px;
 }
 
 .button-input,
@@ -195,6 +197,15 @@ textarea {
 #go-back-button:hover,
 #submit-button:hover {
   background-color: teal;
+}
+
+.display-task {
+  overflow-wrap: break-word;
+}
+
+.bullet-tasks {
+  max-width: 50vw;
+  overflow-wrap: break-word;
 }
 
 @media (min-width: 720px) {

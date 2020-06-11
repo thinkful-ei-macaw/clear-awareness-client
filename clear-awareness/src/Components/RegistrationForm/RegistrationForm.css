@@ -42,6 +42,7 @@ footer {
 }
 .have-acc {
   border: none;
+  background-color: transparent;
   font-family: "Cormorant", serif;
   font-weight: bold;
   font-size: 14px;
@@ -66,5 +67,17 @@ h2 {
 @media (min-width: 720px) {
   .registration-form {
     font-size: 23px;
+  }
+
+  .have-acc {
+    font-size: 18px;
+  }
+
+  .registration-btn {
+    font-size: 20px;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: -25px;
   }
 }

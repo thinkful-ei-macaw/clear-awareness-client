@@ -58,7 +58,7 @@ export default class Dashboard extends Component {
         <div className="centering">
           <div>
             <h2 className="deco">Mindfulness Center</h2>
-            <h3>Mindful Quote</h3>
+            <h3 className="quote-header">Mindful Quote</h3>
           </div>
           <ul className="no-ul-margin">
             {this.state.quotes.length === 0 ? (

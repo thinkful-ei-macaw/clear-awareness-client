@@ -55,6 +55,11 @@
 
 .listing {
   list-style-type: none;
+  overflow-wrap: break-word;
+}
+
+.task-block {
+  width: 85vw;
 }
 
 .text-style {
@@ -92,6 +97,16 @@ textarea {
 #textarea-style {
   width: 70vw;
   height: 200px;
+}
+
+.entry {
+  overflow-wrap: break-word;
+  width: 85vw;
+}
+
+.mindful {
+  max-width: 85vw;
+  overflow-wrap: break-word;
 }
 
 @media (min-width: 720px) {
