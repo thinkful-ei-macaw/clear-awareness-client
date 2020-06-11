@@ -213,6 +213,7 @@ export default class Journal extends React.Component {
             {this.state.editFields ? (
               <input
                 type="text"
+                autoComplete="off"
                 maxLength="100"
                 value={this.state.mindful}
                 id="mindful"
@@ -221,12 +222,13 @@ export default class Journal extends React.Component {
                 required
               />
             ) : (
-              <p>{this.state.mindful}</p>
+              <p className="mindful">{this.state.mindful}</p>
             )}
             <p className="text-style"> My beauty sleep was</p>
             {this.state.editFields ? (
               <input
                 type="number"
+                autoComplete="off"
                 onChange={(e) => this.updateSleepHrs(e.target.value)}
                 value={this.state.sleep_hours}
                 id="sleep-hrs"
@@ -247,6 +249,7 @@ export default class Journal extends React.Component {
                       <li key={index} className="nobullets">
                         <input
                           type="text"
+                          autoComplete="off"
                           className="task-space"
                           onChange={(e) =>
                             this.updateTasks(index, e.target.value)
@@ -273,7 +276,7 @@ export default class Journal extends React.Component {
                 </p>
               </div>
             ) : (
-              <p>
+              <ul className="task-block">
                 {this.state.tasks.map((task, id) => {
                   return (
                     <li className="listing" key={id}>
@@ -281,7 +284,7 @@ export default class Journal extends React.Component {
                     </li>
                   );
                 })}
-              </p>
+              </ul>
             )}
             <p className="text-style">My Thoughts</p>
             {this.state.editFields ? (
@@ -297,7 +300,7 @@ export default class Journal extends React.Component {
                 {this.state.entry}
               </textarea>
             ) : (
-              <p>{this.state.entry}</p>
+              <p className="entry">{this.state.entry}</p>
             )}
           </div>
           <div className="btn-nav">

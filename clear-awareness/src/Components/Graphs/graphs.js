@@ -16,7 +16,6 @@ import {
   CartesianGrid,
   ResponsiveContainer,
   Tooltip,
-  Legend,
 } from "recharts";
 
 export default class Graphs extends React.Component {
@@ -124,7 +123,7 @@ export default class Graphs extends React.Component {
             </LineChart>
           </ResponsiveContainer>
         </div>
-        <h3>Emotion Mapping</h3>
+        <h3 class="emotions">Emotion Mapping</h3>
         <RadarChart
           outerRadius={90}
           width={350}
@@ -144,7 +143,6 @@ export default class Graphs extends React.Component {
             fill="#8884d8"
             fillOpacity={0.6}
           />
-          <Legend />
         </RadarChart>
       </div>
     );

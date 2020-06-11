@@ -15,7 +15,7 @@ h1 {
 nav {
   font-family: "Cormorant", serif;
   position: absolute;
-  top: 0;
+  top: 15px;
   font-size: 20px;
   align-items: center;
 }
@@ -45,4 +45,10 @@ nav {
 
 .title {
   font-size: 55px;
+}
+
+@media (min-width: 720px) {
+  .express-yourself {
+    font-size: 30px;
+  }
 }

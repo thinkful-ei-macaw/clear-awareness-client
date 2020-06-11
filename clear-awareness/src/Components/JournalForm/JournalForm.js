@@ -66,12 +66,12 @@ export default class JournalForm extends Component {
     e.preventDefault();
     let task = this.state.number;
     let tasks = this.state.tasks;
-    
+
     if (document.getElementById("edit-text-input").value.length !== 0) {
       tasks[task] = document.getElementById("edit-text-input").value;
       this.setState({ edit: false, number: null, tasks: tasks });
     } else {
-      this.setState({edit: false, number: false});
+      this.setState({ edit: false, number: false });
     }
   };
 
@@ -84,8 +84,8 @@ export default class JournalForm extends Component {
 
     tasks.splice(task, 1);
 
-    this.setState({tasks: tasks, edit: false, number: false});
-  }
+    this.setState({ tasks: tasks, edit: false, number: false });
+  };
 
   handleCancel = (e) => {
     e.preventDefault();
@@ -93,15 +93,20 @@ export default class JournalForm extends Component {
   };
 
   render() {
-
     return (
-    <div className="form-container">
-      <form onSubmit={this.createJournal} className="journal-form">
+      <div className="form-container">
+        <form onSubmit={this.createJournal} className="journal-form">
           <fieldset className="mood">
             <legend>Mood</legend>
             <div className="emoji">
               <label htmlFor="happy">
-                <input type="radio" name="mood" id="happy" value="1" defaultChecked />
+                <input
+                  type="radio"
+                  name="mood"
+                  id="happy"
+                  value="1"
+                  defaultChecked
+                />
                 <i className="fas fa-grin"></i>
               </label>
               <label htmlFor="ok">
@@ -124,6 +129,7 @@ export default class JournalForm extends Component {
             <input
               type="number"
               id="sleep"
+              autoComplete="off"
               name="sleep"
               min="0"
               max="24"
@@ -137,6 +143,7 @@ export default class JournalForm extends Component {
             <label htmlFor="mindfulAct">Mindful Act </label>
             <input
               type="text"
+              autoComplete="off"
               id="mindfulAct"
               name="mindfulAct"
               placeholder="Mindful Act?"
@@ -149,50 +156,103 @@ export default class JournalForm extends Component {
             <label htmlFor="tasks">Tasks</label>
             <input
               type="text"
+              autoComplete="off"
               id="task-input"
               name="tasks"
               placeholder="Enter Tasks Here"
               maxLength="250"
             />
-            <button type="button" className="addTask" id="add-task-button" onClick={this.addTask} >Add Task</button>
+            <button
+              type="button"
+              className="addTask"
+              id="add-task-button"
+              onClick={this.addTask}
+            >
+              Add Task
+            </button>
           </div>
 
           <div className="display-task">
-            {(this.state.edit) 
-              ? 
+            {this.state.edit ? (
               <div className="edit-input">
-                <input type="text" id="edit-text-input" name="edit-text-input" placeholder={`Task Title: ${document.getElementById(`task-${this.state.number}`).textContent}`} required />
+                <input
+                  type="text"
+                  autoComplete="off"
+                  id="edit-text-input"
+                  name="edit-text-input"
+                  placeholder={`Task Title: ${
+                    document.getElementById(`task-${this.state.number}`)
+                      .textContent
+                  }`}
+                  required
+                />
                 <div className="input-cancel">
-                  <button type="button" name="confirm-button" id="confirm-button" onClick={this.handleInputEdit}>Confirm Edit</button>
-                  <button type="button" name="cancel-button" id="cancel-button" onClick={this.handleCancel}>Cancel Edit</button>
+                  <button
+                    type="button"
+                    name="confirm-button"
+                    id="confirm-button"
+                    onClick={this.handleInputEdit}
+                  >
+                    Confirm Edit
+                  </button>
+                  <button
+                    type="button"
+                    name="cancel-button"
+                    id="cancel-button"
+                    onClick={this.handleCancel}
+                  >
+                    Cancel Edit
+                  </button>
                 </div>
-              </div> 
-              : 
-              <div>
               </div>
-            }
+            ) : (
+              <div></div>
+            )}
             <ul className="task-list">
-              {this.state.tasks.map((task, index) => 
+              {this.state.tasks.map((task, index) => (
                 <li id={index} key={index}>
-                <p id={`task-${index}`}>
-                {task}
-                </p>
-                <div className="edit-delete">
-                  <button type="button" name="edit-button" id="edit-button" onClick={this.handleEditTask}>Edit</button>
-                  <button type="button" name="edit-button" id="delete-button" onClick={this.handleDeleteTask}>Delete</button>
-                </div>
+                  <p className="bullet-tasks" id={`task-${index}`}>
+                    {task}
+                  </p>
+                  <div className="edit-delete">
+                    <button
+                      type="button"
+                      name="edit-button"
+                      id="edit-button"
+                      onClick={this.handleEditTask}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      type="button"
+                      name="edit-button"
+                      id="delete-button"
+                      onClick={this.handleDeleteTask}
+                    >
+                      Delete
+                    </button>
+                  </div>
                 </li>
-              )}
+              ))}
             </ul>
           </div>
-          
+
           <div className="textarea-input">
-            <label htmlFor="textarea">Your Thoughts Here</label>
-            <textarea id="textarea" name="textarea" rows="13" col="10" placeholder="Please place thoughts here." maxLength="500"></textarea>
+            <label className="journallabel" htmlFor="textarea">
+              Your Thoughts Here
+            </label>
+            <textarea
+              id="textarea"
+              name="textarea"
+              rows="13"
+              col="10"
+              placeholder="Please place thoughts here."
+              maxLength="500"
+            ></textarea>
           </div>
 
           <div className="button-input">
-          <button
+            <button
               className="button"
               type="submit"
               id="go-back-button"
@@ -200,10 +260,12 @@ export default class JournalForm extends Component {
             >
               Go Back
             </button>
-            <button type="submit" className="button" id="submit-button">Submit</button>
+            <button type="submit" className="button" id="submit-button">
+              Submit
+            </button>
           </div>
-      </form>
-    </div>
+        </form>
+      </div>
     );
   }
 }
