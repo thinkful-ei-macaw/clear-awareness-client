@@ -50,6 +50,7 @@ class RegistrationForm extends Component {
           <br />
           <input
             ref={this.firstInput}
+            autoComplete="off"
             id="registration-name-input"
             name="name"
             required
@@ -65,6 +66,7 @@ class RegistrationForm extends Component {
           <br />
           <input
             id="registration-password-input"
+            autoComplete="off"
             name="password"
             type="password"
             required
@@ -77,6 +79,7 @@ class RegistrationForm extends Component {
           <br />
           <input
             id="validate-password"
+            autoComplete="off"
             name="passwurd"
             type="password"
             required

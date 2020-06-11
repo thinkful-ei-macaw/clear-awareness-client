@@ -213,6 +213,7 @@ export default class Journal extends React.Component {
             {this.state.editFields ? (
               <input
                 type="text"
+                autoComplete="off"
                 maxLength="100"
                 value={this.state.mindful}
                 id="mindful"
@@ -227,6 +228,7 @@ export default class Journal extends React.Component {
             {this.state.editFields ? (
               <input
                 type="number"
+                autoComplete="off"
                 onChange={(e) => this.updateSleepHrs(e.target.value)}
                 value={this.state.sleep_hours}
                 id="sleep-hrs"
@@ -247,6 +249,7 @@ export default class Journal extends React.Component {
                       <li key={index} className="nobullets">
                         <input
                           type="text"
+                          autoComplete="off"
                           className="task-space"
                           onChange={(e) =>
                             this.updateTasks(index, e.target.value)

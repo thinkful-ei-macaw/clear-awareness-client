@@ -129,6 +129,7 @@ export default class JournalForm extends Component {
             <input
               type="number"
               id="sleep"
+              autoComplete="off"
               name="sleep"
               min="0"
               max="24"
@@ -142,6 +143,7 @@ export default class JournalForm extends Component {
             <label htmlFor="mindfulAct">Mindful Act </label>
             <input
               type="text"
+              autoComplete="off"
               id="mindfulAct"
               name="mindfulAct"
               placeholder="Mindful Act?"
@@ -154,6 +156,7 @@ export default class JournalForm extends Component {
             <label htmlFor="tasks">Tasks</label>
             <input
               type="text"
+              autoComplete="off"
               id="task-input"
               name="tasks"
               placeholder="Enter Tasks Here"
@@ -174,6 +177,7 @@ export default class JournalForm extends Component {
               <div className="edit-input">
                 <input
                   type="text"
+                  autoComplete="off"
                   id="edit-text-input"
                   name="edit-text-input"
                   placeholder={`Task Title: ${
